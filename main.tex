@@ -80,7 +80,7 @@
 %%             country={}}
 %% \fntext[label3]{}
 
-\title{Optimizing Radiomic Feature Selection for Robust and Reproducible Binary Classification}
+\title{Feature selection and relevance of radiomic features for reperfusion prediction}
 
 %% use optional labels to link authors explicitly to addresses:
 %% \author[label1,label2]{}
@@ -184,20 +184,19 @@ Nowadays, possible treatment options for AIS include endovascular treatment (EVT
 Radiomics \cite{Qiu2018}, a method enabling the extraction of a vast amount of information from image data, has garnered attention. This approach involves the extraction of numerous image features, including first-order statistics, gray level run length matrices, neighboring gray tone difference matrices, and shape-based characteristics of the region of interest, which are imperceptible to the human eye. 
 Hofmeister et al. \cite{Hofmeister2020} demonstrated the efficacy of clot-based radiomic features in predicting the successful recanalization outcomes across different EVT strategies. Qiu et al. \cite{Qiu2018} established a relationship between radiomic-based features and the efficacy of the recanalization with intravenous alteplase using NCCT and CTA images, along with the thrombus mask. These findings underscore the potential of radiomics as a valuable tool for extracting meaningful information from medical images, contributing to improved decision-making in the treatment of stroke patients. 
 
-% (b) konkrétne van Voorst et al. 2023 — čo urobili, aké AUC dosiahli pre eTICI≥2B (~0.52–0.56, teda blízko náhode) vs. pre mRS≤2 (~0.78–0.81), aký feature-selection použili (ICC≥0.75 filter, RF, žiadny ďalší výber príznakov) 
+% (b) konkrétne van Voorst et al. 2023 — čo urobili, aké AUC dosiahli pre eTICI≥2B (~0.52–0.56, teda blízko náhode), aký feature-selection použili (ICC≥0.75 filter, RF, žiadny ďalší výber príznakov) 
 
 In this context, van Voorst et al. \cite{vanVoorst2022} identified the association of thrombus volume and texture with the number of retrieval attempts needed for successful reperfusion, selecting features with an intraclass correlation coefficient (ICC)$\geq$0.75 and using the random forest classifier (RF). However, they did not observe any additional value of thrombus radiomics for the prediction of the reperfusion (eTICI$\geq$2B, AUC 0.52) compared to clinical baseline variables (eTICI$\geq$2B AUC 0.56). 
 
 % - Gap/limitácia predchádzajúcej práce: jedna pevná kombinácia feature-selection + klasifikátor; žiadne porovnanie granularity príznakov (voxel/distribution/global, whole vs. skeleton); žiadny permutačný test proti empirickému chance-baseline; žiadne overenie, či iná metóda výberu príznakov (Lasso/RFI) alebo klasifikátor (SVC) zmenia záver
 
-Even though there are many studies which focused on the prediction of the clinical outcome using extracted radiomic features, to the best of our knowledge, none of them has exploited the full potential of information hidden in the available data, relying instead only on the the mean values of the extracted features from thrombus. 
+Even though there are many studies which focused on the prediction of the clinical outcome using extracted radiomic features, to the best of our knowledge, none of them has exploited the full potential of information hidden in the available data, relying instead only on the the mean values of the extracted features from thrombus. Moreover, none of the studies used supervised feature selection algorithms and based the feature selection purely on the removal of features which include similar information based on strictly defined threshold without further investigation.   
 
-Our study focuses on the exploration of features at different spatial scales, from global thrombus-level descriptors to single voxels. Moreover, we investigate the influence of the segmentation size on the prediction success.
 
 % - Research question / hypotézy — formulovať explicitne, napr.:
 %   - Ovplyvňuje voľba metódy výberu príznakov a granularity feature-setu diskriminačný výkon pri predikcii eTICI≥2B?
-
-%   - Je nález „blízko náhode" z referenčného článku robustný naprieč širším metodickým priestorom?
+Our study focuses on several tightly dependent hypotheses. First of all, 
+Our study focuses on the exploration of features at different spatial scales, from global thrombus-level descriptors to single voxels. Moreover, we investigate the influence of the segmentation size on the prediction success.
 
 %   - Zlepší kombinovanie (ensemble/boosting) viacerých slabých modelov výkon nad rámec ktorejkoľvek jednotlivej pipeline?
 
@@ -214,15 +213,18 @@ The patient exclusion criteria for both datasets are described in \cite{Mojtahed
 The ratio of patients with successful reperfusion (SRP) and non-successful reperfusion (nSRP) was randomly selected, resulting in the final training dataset consisting of 82 of patients with SRP and 59 of patients with nSRP, which preserves the real ratio of patients in each group.  
 
 \section{Methods}
-Since the database includes images from different scanners and therefore various resolutions, resampling the data to the same isotropic voxel size of~0.5~mm was crucial to ensure that the same amount of information is provided by each voxel. A total of 1204 voxel-based features were extracted from both NCCT and CTA images using the PyRadiomics toolbox~\cite{VanGriethuysen20171031} with custom parameter settings described in the supplementary file \textit{PyradiomicsConfig.yaml}. Features with empty values were excluded before feature selection. This occurred due to the small size of the thrombus, which made the use of large filter masks useless. 
+Since the database includes images from different scanners and therefore various resolutions, resampling the data to the same isotropic voxel size of~0.5~mm was crucial to ensure that the same amount of information is provided by each voxel. To prevent the impact of the marginal effects of the mask features and thus extract relevant feature values for whole thrombus, dilated segmentation mask was used for the feature extraction. A total of 1204 voxel-based features were extracted from both NCCT and CTA images using the PyRadiomics toolbox~\cite{VanGriethuysen20171031} with custom parameter settings described in the supplementary file \textit{PyradiomicsConfig.yaml}. Features with empty values were excluded before feature selection. This occurred due to the small size of the thrombus, which made the use of large filter masks useless. 
 
-To explore the feature potential information contribution, extraction of three feature sets at different levels of neighborhood influence was applied: voxel-based, distribution-based and global-based. \textbf{The voxel-based set} included 2066 feature values for each thrombus voxel. The \textbf{distribution-based set} was derived from the probability density across 10 bins of thrombus feature histogram, which resulted in 20660 extracted features per patient. The \textbf{global-based set}, was based on global statistics computed from the feature values of the entire thrombus, including the voxel count, mean, standard deviation, minimum, maximum and the 25\%, 50\% and 75\% percentiles. Therefore, global based dataset included 16528 feature values per patient.  
+According to our preliminary study~\cite{Nemcekova2024}, determining the borders of the thrombus is challenging, and even experienced radiologists do not fully agree on the size of the segmented thrombi. Uncertain thrombus segmentation boundaries may introduce unwanted information from the clot neighborhood, thereby mixing information from two different tissues, which may lead to information loss. To investigate the influence of segmentation size, and specifically the impact of edge voxels on the prediction, only voxels located on the thrombus centerline dilated by 3 voxels were selected. 
 
-According to our preliminary study~\cite{Nemcekova2024}, determining the borders of the thrombus is challenging, and even experienced radiologists do not fully agree on the size of the segmented thrombi. Uncertain thrombus segmentation boundaries may introduce unwanted information from the clot neighborhood, thereby mixing information from two different tissues, which may lead to information loss. To investigate the influence of segmentation size, and specifically the impact of edge voxels on the prediction, only voxels located on the thrombus centerline dilated by 3 voxels were selected. As a result, six datasets (three feature set types and two region sizes) were used for the analysis.
+To explore the feature potential of information contribution, extraction of three feature sets at different levels of neighborhood influence was applied: voxel-based, distribution-based and global-based. \textbf{The voxel-based set} included 2066 feature values for each thrombus voxel. The \textbf{distribution-based set} was derived from the probability density across 10 bins of thrombus feature histogram, which resulted in 20660 extracted features per patient. The \textbf{global-based set}, was based on global statistics computed from the feature values of the entire thrombus, including the voxel count, mean, standard deviation, minimum, maximum and the 25\%, 50\% and 75\% percentiles. Therefore, global based dataset included 16528 feature values per patient. As a result, six datasets (three feature set types and two region sizes) were used for the analysis.  
 
 To ensure that the division of the dataset into training and test sets did not affect the reproducibility of the predictions, the dataset was split into five non-overlapping training and testing folds. Each feature set underwent preprocessing, including z-score normalization based on the training set. 
 
-To define radiomic features that introduce an additional information for the diagnostic establishment and thus for the clinicians, the classification of the SRP/nSRP using the extracted features was performed. To ensure selected classification method does not influence the outcome accuracy, a support vector classifier (SVC) and random forest classifier (RF) were used. Since radiomics offers a large number of extracted features some of which may be redundant or difficult to interpret and may lead to model overfitting, feature selection was performed using the Least Absolute Shrinkage and Selection Operator (LASSO) and Random Forest Importancies (RFI). All possible combinations of the selectors and classifiers were trained, resulting in four prediction method types (LASSO-SVC, LASSO-RF, RFI-SVC, and RFI-RF). This ensures the definition of the most appropriate combination of the selector and classifier for this problematic is established. 
+To define radiomic features that introduce an additional information for the diagnostic establishment and thus for the clinicians, the classification of the SRP/nSRP using the extracted features was performed. Since radiomics offers a large number of extracted features some of which may be redundant or difficult to interpret and may lead to model overfitting, feature selection was performed using the Least Absolute Shrinkage and Selection Operator (LASSO) or XGBoost Random Forest Classifier Importance (RFI). To ensure selected classification method does not influence the outcome accuracy, a Support Vector Classifier (SVC) and XGBoost Random Forest Classifier (RF) were used.  All possible combinations of the selectors and classifiers were trained, resulting in four prediction method types (LASSO-SVC, LASSO-RF, RFI-SVC, and RFI-RF). This ensures the definition of the most appropriate combination of the selector and classifier for this problematic is established. 
+
+Parameter tuning was performed using Bayesian optimization with 20 trials. The regularization parameter range for LASSO was defined according to Bickel et al., 2009 \cite{Bickel200981}, only features with non-zero coefficients were retained. Detailed information about parameter setting and optimization may be seen in Table \textit{A1}. 
+
 
 Parameter tuning was performed using Bayesian optimization with 20 trials, where the number of estimators and maximum depth were optimized for the RF. The regularization parameter range for LASSO was defined according to Bickel et al., 2009 \cite{Bickel200981}, and the number of selected features in RFI was optimized based on the feature importancies. In the models using LASSO selection, only features with non-zero coefficients were retained. Feature selection and classifier training were treated as a single pipeline. Therefore, the Bayesian optimization was applied separately for each split, resulting in 120 trained models (3 dataset types x 2 area sizes x 5 folds x 4 methods), each with its own optimized parameter set and selected feature subset. Moreover, since the availability of independent testing dataset, optimization and training of all fold models was performed. To support the green learning, only models for distribution and global based datasets were trained, since all of the models using voxel based dataset resulted in the prediction of the same label. This resulted to the creation of additional 16 (2 dataset types - distribution and global based x 2 area sizes x 1 fold x 4 methods) models which used the information from the whole training dataset for training.
 
@@ -246,7 +248,7 @@ The investigation, whether the models performance is higher than  Based on the F
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=1\textwidth]{doc/D3_cohens_kappa_heatmap_all_fsets.png}
+\includegraphics[width=1\textwidth]{doc/D4_diff_and_kappa_heatmap_all_fsets.png}
 \caption{Cohen§s Kappa  RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}\label{fig.D3_cohens_kappa_heatmap_all_fsets}
 \end{figure}
 
@@ -284,11 +286,20 @@ According to Fig.~\ref{fig.spline_combined_dist_global}, it is visible that mode
 
 Registry - different population, older scanners
 
-\textbf{Limitations}
+\section{Acknowledgements}
+
+\section{CRediT}
+% https://www.elsevier.com/researcher/author/policies-and-guidelines/credit-author-statement
+
+Petra~Nemcekova: Conceptualization, Data curation, Formal analysis, Funding acquisition, Investigation, Methodology, Project administration, Software, Validation, Visualization, Writing – original draft, Writing – review \& editing. Jiri~Chmelik: Conceptualization, Project administration, Supervision, Visualization, Writing – original draft, Writing – review \& editing. Tomas~Vicar: Conceptualization, Supervision, Writing – original draft, Writing – review \& editing. Mahsa~Mojtahedi: Data curation, Writing – review \& editing. Henk~A.~Marquering: Resources, Supervision, Writing – review \& editing. Roman~Jakubicek: Conceptualization, Project administration, Supervision, Writing – original draft, Writing – review \& editing
 
 
+\section{Appendices}
+We ask you to use the following format for appendices:
 
+Identify individual appendices within your article using the format: A, B, etc.
 
+Give separate numbering to formulae and equations within appendices using formats such as Eq. (A.1), Eq. (A.2), etc. and in subsequent appendices, Eq. (B.1), Eq. (B. 2) etc. In a similar way, give separate numbering to tables and figures using formats such as Table A.1; Fig. A.1, etc.
 
 
 % \subsection{Example Subsection}

@@ -188,7 +188,11 @@ Qiu et al. \cite{Qiu2018} established a relationship between radiomic-based feat
 These findings underscore the potential of radiomics as a valuable tool for extracting meaningful information from medical images, contributing to improved decision-making in the treatment of stroke patients. Even though there are many studies which focused on the prediction of the clinical outcome using extracted radiomic features, to the best of our knowledge, none of them exploited the potential of information hidden in the available data and used only the mean values of the extracted features from the thrombus. Our study focuses on the exploration of features at different levels of neighborhood influence. Moreover we investigate the influence of the segmentation size on the prediction success.
 
 
-\section{Dataset}
+
+
+\section{Methods}
+
+\subsection{Study cohorts and outcome definition}
 
 % 2.1 Study cohorts and outcome definition
 % - Popis kohort (interná CV kohorta „NOIV" vs. externá „REGISTRY"), veľkosti, in/exclusion
@@ -201,7 +205,9 @@ The patient exclusion criteria for both datasets are described in \cite{Mojtahed
 
 The ratio of patients with successful reperfusion (SRP) and non-successful reperfusion (nSRP) was randomly selected, resulting in the final training dataset consisting of 82 of patients with SRP and 59 of patients with nSRP, which preserves the real ratio of patients in each group.  
 
-\section{Methods}
+
+\subsection{Data preparation ...}
+
 Since the database includes images from different scanners and therefore various resolutions, resampling the data to the same isotropic voxel size of~0.5~mm was crucial to ensure that the same amount of information is provided by each voxel. A total of 1204 voxel-based features were extracted from both NCCT and CTA images using the PyRadiomics toolbox~\cite{VanGriethuysen20171031} with custom parameter settings described in the supplementary file \textit{PyradiomicsConfig.yaml}. Features with empty values were excluded before feature selection. This occurred due to the small size of the thrombus, which made the use of large filter masks useless. 
 
 To explore the feature potential information contribution, extraction of three feature sets at different levels of neighborhood influence was applied: voxel-based, distribution-based and global-based. \textbf{The voxel-based set} included 2066 feature values for each thrombus voxel. The \textbf{distribution-based set} was derived from the probability density across 10 bins of thrombus feature histogram, which resulted in 20660 extracted features per patient. The \textbf{global-based set}, was based on global statistics computed from the feature values of the entire thrombus, including the voxel count, mean, standard deviation, minimum, maximum and the 25\%, 50\% and 75\% percentiles. Therefore, global based dataset included 16528 feature values per patient.  
@@ -217,6 +223,12 @@ Parameter tuning was performed using Bayesian optimization with 20 trials, where
 First, the predictivity of each model was determined separately. Second, to establish the ... of the method, the parameter optimization was applied to train the final model using the entire training database without splitting. Third, to establish the possible predictive performance increase caused by the model combination, all combinations of models were provided to the boosting algorithm. Additional 15 boosted models were trained.        
 
 All trained models are freely available on XXX and the framework is available on GitHub.
+
+
+\section{Results}
+
+\subsection{ Replikácia referenčnej pipeline}
+
 
 \section{Discussion}
 
