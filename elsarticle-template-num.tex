@@ -260,15 +260,21 @@ First, the predictivity of each model was determined separately. Second, to esta
 All trained models are freely available on XXX and the framework is available on GitHub.
 
 
+
+\subsection{Statistical analysis}
+\NOTETODO[dopsat statistickou analýzu]{domluvíme se ještě co všechno dodělat, a podle toho...}
+
+
+
 \section{Results}
+
+
+
 
 
 % \subsection{Performance across the feature-selection framework}
 \subsection{Performance across selector–classifier–feature-set combinations}
 \label{sec:results:factorial}
-
-
-Median cross-validated AUC across the 24 combinations ranged from 0.367 to 0.673, the four whole-thrombus global combinations being the high- est as a group (0.632–0.673, a range containing the best whole-thrombus distribution combination at 0.651) and no centerline combination of either patient-level set exceeding 0.559 (Fig. \ref{fig.AUC_ACC_distributions_all}).
 
 
 
@@ -281,8 +287,43 @@ Median cross-validated AUC across the 24 combinations ranged from 0.367 to 0.673
 
 
 
+This section establishes how much the choice of selector, classifier, feature set and region of interest alone can move discriminative performance within a single development cohort, before any of these results is compared with a null model or with the reference pipeline in Fig.~\ref{fig.AUC_ACC_distributions_all}) with detailed resutls in \NOTETODO[Table SXXX]{udělat tabulku se statistikama do suplementu.}.
+
+
+Median cross-validated AUC across the 24 combinations ranged from 0.367 to 0.673, the four whole-thrombus global combinations being the highest as a group (0.632--0.673) and no centerline combination of either patient-level set exceeding 0.559.
+
+Accuracy has to be read against the majority-class accuracy of the development cohort ($82/141 = 0.582$) and not against 0.5: only 4 of the 24 combinations exceeded it by median accuracy, and because the proportion of successful reperfusion varied between 0.448 and 0.714 across the outer folds, accuracy is meaningful only fold-wise.
+
+
+Restricting the region of interest to the dilated centerline removed the discrimination present on the whole thrombus in the global-based set, where all four combinations fell from 0.632--0.673 to below chance (0.400--0.497); in the distribution-based set the effect was not consistent, the two combinations that had discriminated on the whole thrombus losing that discrimination while the two that had not changed little.
+
+
+
+
+\NOTETODO[voxel agregace]{majority-vote na pacienta z voxelovych predikci -- teprve pak jsou voxelove radky srovnatelne s pacientskymi}
+
+\NOTETODO[CI]{bootstrap CI pro AUC -- potreba per-pacientske skore nasich modelu na CV foldech, v datech nejsou}
+
+
+
+
+
+
 % \subsection{Statistical significance against the permutation baseline}
 \subsection{Comparison against the permutation null}
+
+This section asks whether the performance reported above exceeds what the same pipeline achieves on randomised outcome labels, because a flat chance level of 0.5 is only an assumption about where a random model would land and need not hold for every metric or every unit of analysis.
+
+\NOTETODO[pospat princip statistiky tady počítané]{dodělat statistiku a podle toho upravit}
+% The null was built separately for every combination by permuting the patient-level outcome labels 100 times within each outer test fold, holding the selected features and the fitted classifier fixed, and the test statistic was the mean AUC over the five folds; with 100 permutations the smallest attainable $p$-value is 0.0099, and because the model is not refitted the null does not absorb the optimism of feature selection and tuning.
+
+
+
+\NOTECHECK[For AUC, 6 of the 16 patient-level combinations reached $p < 0.05$ uncorrected, all of them on the whole thrombus and with $\kappa$ between $+0.225$ and $+0.359$, three of them at the resolution floor of $p = 0.0099$.]{předběžná čísla - můžou se změnit, pak dopsat i pro ACC}
+
+
+
+
 
 \label{sec:results:permutation}
 \begin{figure}[!htb]
@@ -300,6 +341,7 @@ Median cross-validated AUC across the 24 combinations ranged from 0.367 to 0.673
 
 % \subsection{Replication of the reference pipeline}
 \subsection{Comparison against the reference pipeline}
+
 \label{sec:results:reference}
 \begin{figure}[!htb]
 \centering
@@ -308,14 +350,14 @@ Median cross-validated AUC across the 24 combinations ranged from 0.367 to 0.673
 \
 \end{figure}
 
+This section asks whether the modest discrimination reported so far is a property of thrombus radiomics in this cohort or of the analysis choices made here, by recomputing a published pipeline for the same task on the same patients and the same folds and placing it next to the proposed combinations.
+
 
 
 
 
 % \subsection{Internal cross-validation versus external validation}
 \subsection{External validation on the MR CLEAN Registry}
-
-\NOTETODO[statistika do tabulky]{tabulka porovnani naseho nejlepsiho modelu vs. jeho permutacni varianty vcetne statistickeho testu + porovnat Henkuv s nasim na stejnem setu z Registry + statisticky test - zkusit pouzit bagging?}
 
 \label{sec:results:external}
 \begin{table}[]
@@ -330,7 +372,11 @@ Median cross-validated AUC across the 24 combinations ranged from 0.367 to 0.673
 
 
 
+This section asks whether any of the pipelines retains its discriminative performance once it is moved to a cohort it was not developed on, which is the question that cross-validation within a single curated dataset cannot answer.
 
+
+
+\NOTETODO[statistika do tabulky]{tabulka porovnani naseho nejlepsiho modelu vs. jeho permutacni varianty vcetne statistickeho testu + porovnat Henkuv s nasim na stejnem setu z Registry + statisticky test - zkusit pouzit bagging?}
 
 
 
