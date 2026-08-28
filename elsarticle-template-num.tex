@@ -43,11 +43,25 @@
 \usepackage{amsmath}
 %% The amsthm package provides extended theorem environments
 %% \usepackage{amsthm}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{array}
 
 %% The lineno packages adds line numbers. Start line numbering with
 %% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
 %% for the whole article with \linenumbers.
 %% \usepackage{lineno}
+
+
+
+
+% Manuscript notes: \NOTE, \NOTEWARN, \NOTECHECK, \NOTETODO, \NOTEQUERY.
+% Add [show] to display notes in the PDF.
+% \usepackage[show]{manuscriptnotes}
+\usepackage[]{manuscriptnotes}
+
+
+
 
 \journal{Computerized Medical Imaging and Graphics}
 
@@ -132,6 +146,7 @@
 
 %%Graphical abstract
 \begin{graphicalabstract}
+\NOTETODO{JCh}
 %\includegraphics{grabs}
 \end{graphicalabstract}
 
@@ -227,12 +242,15 @@ All trained models are freely available on XXX and the framework is available on
 
 \section{Results}
 
-\subsection{ Replikácia referenčnej pipeline}
+
+% \subsection{Performance across the feature-selection framework}
+\subsection{Performance across selector–classifier–feature-set combinations}
+\label{sec:results:factorial}
 
 
-\section{Discussion}
+Median cross-validated AUC across the 24 combinations ranged from 0.367 to 0.673, the four whole-thrombus global combinations being the high- est as a group (0.632–0.673, a range containing the best whole-thrombus distribution combination at 0.651) and no centerline combination of either patient-level set exceeding 0.559 (Fig. \ref{fig.AUC_ACC_distributions_all}).
 
-The prediction accuracies (ACC) and areas under the curve (AUC) were evaluated for all methods, feature sets, and regions of interest to investigate the dependence of model performance on dataset type, area size, fold, and method used. All results are provided in supplementary file~\textit{B}. 
+
 
 \begin{figure}[!htb]
 \centering
@@ -240,15 +258,72 @@ The prediction accuracies (ACC) and areas under the curve (AUC) were evaluated f
 \caption{AUC (top) and ACC (bottom) distributions across all evaluated classifiers and feature sets. Results are grouped by feature set type: distribution-based, global-based, and voxel-based. Within each group, individual violin plots correspond to one classifier. The left half of each violin plot represents models trained on whole-thrombus features; the right half represents models trained on thrombus core features. RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}\label{fig.AUC_ACC_distributions_all}
 \end{figure}
 
+
+
+
+a 
+
+% \subsection{Statistical significance against the permutation baseline}
+\subsection{Comparison against the permutation null}
+\label{sec:results:permutation}
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{doc/D4_diff_and_kappa_heatmap_all_fsets.png}
+\caption{Cohen's Kappa  RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}\label{fig.D3_cohens_kappa_heatmap_all_fsets}
+\end{figure}
+
+
+\NOTE{note}
+\NOTETODO[text]{napsat ho}
+
+
+
+
+
+% \subsection{Replication of the reference pipeline}
+\subsection{Comparison against the reference pipeline}
+\label{sec:results:reference}
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{doc/auc_acc_selected_vs_henk_pipeline_boxplot}
+
+\end{figure}
+
+
+% \subsection{Internal cross-validation versus external validation}
+\subsection{External validation on the MR CLEAN Registry}
+
+\NOTETODO[statistika do tabulky]{tabulka porovnani naseho nejlepsiho modelu vs. jeho permutacni varianty vcetne statistickeho testu + porovnat Henkuv s nasim na stejnem setu z Registry + statisticky test - zkusit pouzit bagging?}
+
+\label{sec:results:external}
+\begin{table}[]
+    \centering
+    \begin{tabular}{c|c}
+         &  \\
+         & 
+    \end{tabular}
+    \caption{Caption}
+    \label{tab:placeholder}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+\section{Discussion}
+
+The prediction accuracies (ACC) and areas under the curve (AUC) were evaluated for all methods, feature sets, and regions of interest to investigate the dependence of model performance on dataset type, area size, fold, and method used. All results are provided in supplementary file~\textit{B}. 
+
+
+
 As visible in Fig.~\ref{fig.AUC_ACC_distributions_all}, the meaningful performance of the models decreased when only the core voxels of the thrombus were selected compared to the results achieved using the information from the whole clot. Accordingly, even though the precision of the voxel based models was high, the voxel based dataset appeared to contain insufficient information to distinguish between SRP/nSRP and led to model underfitting with the prediction of the same label regardless of the method used. These results confirm the expected findings, that the information provided by a single voxel is insufficient to establish the clinical outcome. Nevertheless, this dataset was crucial for the creation of the global and distribution based datasets.
 
 The investigation, whether the models performance is higher than  Based on the Fig.~\ref{fig.D3_cohens_kappa_heatmap_all_fsets} of the Cohen's~$\kappa$ comparing the performance of the model to its randomized variant. The performance of the random model variant was obtained by randomly shuffling labels 100 times to the testing dataset. The mean accuracy achieved on the dataset with not true labels is considered as the accuracy of the random model with the same architecture and parameters as the predictive one. 
-
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=1\textwidth]{doc/D3_cohens_kappa_heatmap_all_fsets.png}
-\caption{Cohen§s Kappa  RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}\label{fig.D3_cohens_kappa_heatmap_all_fsets}
-\end{figure}
 
 
 
@@ -287,124 +362,22 @@ Registry - different population, older scanners
 \textbf{Limitations}
 
 
+% \include{tables_tom/output/supplement}
 
-
-
-
-% \subsection{Example Subsection}
-% \label{subsec1}
-
-% Subsection text.
-
-% %% Use \subsubsection, \paragraph, \subparagraph commands to 
-% %% start 3rd, 4th and 5th level sections.
-% %% Refer following link for more details.
-% %% https://en.wikibooks.org/wiki/LaTeX/Document_Structure#Sectioning_commands
-
-% \subsubsection{Mathematics}
-% %% Inline mathematics is tagged between $ symbols.
-% This is an example for the symbol $\alpha$ tagged as inline mathematics.
-
-% %% Displayed equations can be tagged using various environments. 
-% %% Single line equations can be tagged using the equation environment.
-% \begin{equation}
-% f(x) = (x+a)(x+b)
-% \end{equation}
-
-% %% Unnumbered equations are tagged using starred versions of the environment.
-% %% amsmath package needs to be loaded for the starred version of equation environment.
-% \begin{equation*}
-% f(x) = (x+a)(x+b)
-% \end{equation*}
-
-% %% align or eqnarray environments can be used for multi line equations.
-% %% & is used to mark alignment points in equations.
-% %% \\ is used to end a row in a multiline equation.
-% \begin{align}
-%  f(x) &= (x+a)(x+b) \\
-%       &= x^2 + (a+b)x + ab
-% \end{align}
-
-% \begin{eqnarray}
-%  f(x) &=& (x+a)(x+b) \nonumber\\ %% If equation numbering is not needed for a row use \nonumber.
-%       &=& x^2 + (a+b)x + ab
-% \end{eqnarray}
-
-% %% Unnumbered versions of align and eqnarray
-% \begin{align*}
-%  f(x) &= (x+a)(x+b) \\
-%       &= x^2 + (a+b)x + ab
-% \end{align*}
-
-% \begin{eqnarray*}
-%  f(x)&=& (x+a)(x+b) \\
-%      &=& x^2 + (a+b)x + ab
-% \end{eqnarray*}
-
-% %% Refer following link for more details.
-% %% https://en.wikibooks.org/wiki/LaTeX/Mathematics
-% %% https://en.wikibooks.org/wiki/LaTeX/Advanced_Mathematics
-
-% %% Use a table environment to create tables.
-% %% Refer following link for more details.
-% %% https://en.wikibooks.org/wiki/LaTeX/Tables
-% \begin{table}[t]%% placement specifier
-% %% Use tabular environment to tag the tabular data.
-% %% https://en.wikibooks.org/wiki/LaTeX/Tables#The_tabular_environment
-% \centering%% For centre alignment of tabular.
-% \begin{tabular}{l c r}%% Table column specifiers
-% %% Tabular cells are separated by &
-%   1 & 2 & 3 \\ %% A tabular row ends with \\
-%   4 & 5 & 6 \\
-%   7 & 8 & 9 \\
-% \end{tabular}
-% %% Use \caption command for table caption and label.
-% \caption{Table Caption}\label{fig1}
-% \end{table}
-
-
-% %% Use figure environment to create figures
-% %% Refer following link for more details.
-% %% https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions
-% \begin{figure}[t]%% placement specifier
-% %% Use \includegraphics command to insert graphic files. Place graphics files in 
-% %% working directory.
-% \centering%% For centre alignment of image.
-% \includegraphics{example-image-a}
-% %% Use \caption command for figure caption and label.
-% \caption{Figure Caption}\label{fig1}
-% %% https://en.wikibooks.org/wiki/LaTeX/Importing_Graphics#Importing_external_graphics
-% \end{figure}
-
-
-% %% The Appendices part is started with the command \appendix;
-% %% appendix sections are then done as normal sections
-% \appendix
-% \section{Example Appendix Section}
-% \label{app1}
-
-% Appendix text.
-
-% %% For citations use: 
-% %%       \cite{<label>} ==> [1]
-
-% %%
-% Example citation, See \cite{lamport94}.
-
-%% If you have bib database file and want bibtex to generate the
-%% bibitems, please use
-%%
 \bibliographystyle{elsarticle-num} 
 \bibliography{BibFile}
 
-%% else use the following coding to input the bibitems directly in the
-%% TeX file.
 
-%% Refer following link for more details about bibliography and citations.
-%% https://en.wikibooks.org/wiki/LaTeX/Bibliography_Management
+\clearpage
+\newgeometry{margin=15mm}
+\input{tables_tom/output/supplement_body}
+\restoregeometry
+
 
 
 \end{document}
+
+
 
 \endinput
 %%

@@ -1,0 +1,23 @@
+%% ---------------------------------------------------------------------------
+%% GENEROVANO: table1_cohorts.py
+%% Needitovat rucne -- zmeny prepise dalsi beh `python3 make_all.py`.
+%% Zdroje: Boosting/Predictions/*_patient_results.csv (popisky foldu), heterogeneity/Registry_data_IDs.json, rukopis (vylucovaci kaskada)
+%% ---------------------------------------------------------------------------
+{\footnotesize\setlength{\tabcolsep}{4pt}%
+\begin{tabular}{lrr}
+\toprule
+Step & MR CLEAN NO-IV & MR CLEAN Registry \\
+\midrule
+Initial cohort & 539 & 2597 \\
+\midrule
+\multicolumn{3}{l}{\emph{Excluded}} \\
+\quad Missing eTICI score & --- & 16 \\
+\quad Missing thrombus segmentation & --- & 575 \\
+\quad Slice spacing $>$ 1~mm & --- & 100 \\
+\quad Feature extraction failure & 243 & --- \\
+\quad Manual segmentation quality review & 155 & \emph{not performed} \\
+\midrule
+Final analysis cohort & \textbf{141} & \textbf{1906} \\
+Reperfusion eTICI 2C--3, $n$ (\%) & 82 (58.2\%) & --- \\
+\bottomrule
+\end{tabular}}

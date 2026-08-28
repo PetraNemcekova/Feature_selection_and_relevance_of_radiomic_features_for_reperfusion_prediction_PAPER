@@ -1,0 +1,258 @@
+% ============================================================================
+% manuscriptnotes.sty
+%
+% Manuscript annotation commands for collaborative writing.
+%
+% USAGE
+% -----
+%
+% Add this package to the preamble of main.tex:
+%
+%     \usepackage{manuscriptnotes}
+%
+% This is the default / submission mode. Notes are NOT typeset.
+%
+% To show notes in the PDF, use:
+%
+%     \usepackage[show]{manuscriptnotes}
+%
+%
+% NOTE COMMANDS
+% -------------
+%
+% The braces always hold the note itself. Nothing is added to the running
+% text, so the note simply sits at that point in the source:
+%
+%     \NOTETODO{the whole paragraph needs a rewrite}
+%
+%
+% The optional bracket holds a span of the manuscript that the note is
+% about, the way an Overleaf comment is anchored to a piece of text.
+% That span stays in the paper; the note never does:
+%
+%     \NOTE[AUC 0.673]{worth double-checking}
+%
+%     \NOTEWARN[1906 patients]{1839 in Registry_data_IDs}
+%
+%     \NOTECHECK[median 0.496]{match FAKTA.md 10.3?}
+%
+%     \NOTETODO[Fig. 3]{redraw from set A}
+%
+%     \NOTEQUERY[0.481]{B5: which set do we report?}
+%
+%
+% AVAILABLE NOTE TYPES
+% --------------------
+%
+%     \NOTE       green    general manuscript note
+%
+%     \NOTEWARN   red      warning / problem; should block submission
+%
+%     \NOTECHECK  orange   verify against data, source, calculation, etc.
+%
+%     \NOTETODO   blue     work still to do
+%
+%     \NOTEQUERY  violet   question requiring an author decision
+%
+%
+% AUTOCOMPLETE IN OVERLEAF
+% ------------------------
+%
+% All commands intentionally share the NOTE prefix. Typing
+%
+%     \NOTE
+%
+% in Overleaf therefore brings up all five commands in the autocomplete
+% dropdown, so the note type can be selected rather than remembered.
+%
+%
+% HIDDEN VS. VISIBLE NOTES
+% ------------------------
+%
+% With notes hidden:
+%
+%     \usepackage{manuscriptnotes}
+%
+% each command outputs its optional bracketed span and nothing else.
+% Therefore, the compiled manuscript is exactly what it would be without
+% any notes.
+%
+% Example:
+%
+%     The median \NOTE[AUC was 0.673]{check this value} in cross-validation.
+%
+% becomes:
+%
+%     The median AUC was 0.673 in cross-validation.
+%
+%
+% With notes visible:
+%
+%     \usepackage[show]{manuscriptnotes}
+%
+% the bracketed span is coloured and the note appears in the margin under
+% the corresponding note-type label.
+%
+%
+% WHY COMMANDS INSTEAD OF % COMMENTS?
+% -----------------------------------
+%
+% Overleaf renders every % comment in the same grey and offers no setting
+% to change that. These notes are ordinary LaTeX commands, so the editor
+% colours them and, once each command has been used in the project,
+% Overleaf offers it in the autocomplete dropdown.
+%
+% They also live directly in the .tex source, so they travel through the
+% git bridge. Overleaf's own review-mode comments do not.
+%
+%
+% IMPORTANT
+% ---------
+%
+% A command name cannot contain a hyphen, hence:
+%
+%     \NOTEWARN
+%
+% rather than:
+%
+%     \NOTE-WARN
+%
+%
+% A mistyped command name produces an "Undefined control sequence" error,
+% so a typo stops the build instead of silently hiding a note.
+%
+%
+% An anchor containing a closing bracket must be braced:
+%
+%     \NOTE[{a] b}]{check this}
+%
+%
+% Neither argument may contain a literal % character or unbalanced { }.
+%
+%
+% ADDING A NEW NOTE TYPE
+% ----------------------
+%
+% To add a note type, add one \definenote line below:
+%
+%     \definenote{COMMAND}{colour}{margin label}
+%
+% For example:
+%
+%     \definenote{NOTESTAT}{cyan!60!black}{STAT}
+%
+% This creates:
+%
+%     \NOTESTAT[p = 0.032]{verify statistical test}
+%
+% Nothing else needs to be changed.
+%
+% ============================================================================
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{manuscriptnotes}[2026/08/27 Manuscript annotation commands]
+
+\RequirePackage{xcolor}
+
+
+% ============================================================================
+% PACKAGE OPTIONS
+%
+% Default:
+%
+%     \usepackage{manuscriptnotes}
+%
+% Notes are hidden.
+%
+%
+% Working version:
+%
+%     \usepackage[show]{manuscriptnotes}
+%
+% Notes are shown in the margin.
+% ============================================================================
+
+\newif\ifmanuscriptnotes
+\manuscriptnotesfalse
+
+\DeclareOption{show}{\manuscriptnotestrue}
+\DeclareOption{hide}{\manuscriptnotesfalse}
+
+\ProcessOptions\relax
+
+
+% ============================================================================
+% INTERNAL NOTE COMMAND
+%
+% #1 = colour
+% #2 = optional anchored manuscript text
+% #3 = label shown in margin
+% #4 = note text
+% ============================================================================
+
+\newcommand{\shownote}[4]{%
+  \ifmanuscriptnotes
+    \textcolor{#1}{#2}%
+    \marginpar{%
+      \raggedright
+      \footnotesize
+      \color{#1}%
+      {\large\bfseries #3}\par
+      #4\par
+    }%
+  \else
+    #2%
+  \fi
+}
+
+
+% ============================================================================
+% NOTE TYPE FACTORY
+%
+% Usage:
+%
+%     \definenote{command name}{colour}{margin label}
+%
+% Example:
+%
+%     \definenote{NOTESTAT}{cyan!60!black}{STAT}
+%
+% creates the command:
+%
+%     \NOTESTAT[anchor text]{note text}
+%
+% ============================================================================
+
+\newcommand{\definenote}[3]{%
+  \expandafter\newcommand\csname #1\endcsname[2][]{%
+    \shownote{#2}{##1}{#3}{##2}%
+  }%
+}
+
+
+% ============================================================================
+% NOTE TYPES
+% ============================================================================
+
+% General manuscript note
+\definenote{NOTE}{green!55!black}{NOTE}
+
+% Warning / problem that should be resolved before submission
+\definenote{NOTEWARN}{red!75!black}{WARN}
+
+% Something that should be verified against data/source/calculation
+\definenote{NOTECHECK}{orange!80!black}{CHECK}
+
+% Work that still needs to be done
+\definenote{NOTETODO}{blue!70!black}{TODO}
+
+% Question requiring an author decision
+\definenote{NOTEQUERY}{violet}{QUERY}
+
+
+% ============================================================================
+% End of manuscriptnotes.sty
+% ============================================================================
+
+\endinput

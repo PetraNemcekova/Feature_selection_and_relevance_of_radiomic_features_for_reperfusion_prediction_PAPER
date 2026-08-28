@@ -1,0 +1,26 @@
+%% ---------------------------------------------------------------------------
+%% GENEROVANO: table7_nadeau_bengio.py
+%% Needitovat rucne -- zmeny prepise dalsi beh `python3 make_all.py`.
+%% Zdroje: final_test_results_all_folds_updated.csv, results_Henks_pipeline/07_split_cv/test_set_metrics_across_splits.csv, henks_icc_test_results_all_folds.csv
+%% ---------------------------------------------------------------------------
+{\scriptsize\setlength{\tabcolsep}{3pt}%
+\begin{tabular}{llrrrc}
+\toprule
+Pipeline A & Pipeline B & Mean $\Delta$AUC & $t$ & $t$ & $|t| > t_{\text{crit}}$ \\
+ &  & (A $-$ B) & (uncorrected) & (corrected) &  \\
+\midrule
+LASSO--XGBRF          & RFI--XGBRF         & $+0.030$ & $+1.71$ & $+1.14$ & no \\
+LASSO--XGBRF          & L1--LinSVC         & $-0.012$ & $-0.42$ & $-0.28$ & no \\
+LASSO--XGBRF          & RFI--NuSVC         & $+0.019$ & $+0.39$ & $+0.26$ & no \\
+RFI--XGBRF            & L1--LinSVC         & $-0.042$ & $-1.28$ & $-0.86$ & no \\
+RFI--XGBRF            & RFI--NuSVC         & $-0.010$ & $-0.21$ & $-0.14$ & no \\
+L1--LinSVC            & RFI--NuSVC         & $+0.031$ & $+1.35$ & $+0.90$ & no \\
+\midrule
+LASSO--XGBRF          & Reference pipeline & $+0.165$ & $+1.50$ & $+1.00$ & no \\
+RFI--XGBRF            & Reference pipeline & $+0.136$ & $+1.23$ & $+0.82$ & no \\
+L1--LinSVC            & Reference pipeline & $+0.177$ & $+2.15$ & $+1.43$ & no \\
+RFI--NuSVC            & Reference pipeline & $+0.146$ & $+2.31$ & $+1.54$ & no \\
+XGBRF on ICC features & Reference pipeline & $-0.010$ & $-0.23$ & $-0.15$ & no \\
+NuSVC on ICC features & Reference pipeline & $+0.046$ & $+0.53$ & $+0.35$ & no \\
+\bottomrule
+\end{tabular}}

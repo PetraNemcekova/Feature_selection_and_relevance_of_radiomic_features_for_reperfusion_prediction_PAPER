@@ -1,0 +1,44 @@
+%% -------------------------------------------------------------------------
+%% GENEROVANO: make_all.py -- needitovat rucne.
+%% Samostatny supplement k odeslani. Preklad primo v teto slozce:
+%%   docker run --rm -v "$PWD:/work" -u "$(id -u):$(id -g)" \
+%%     ghcr.io/tomasvicar/latex-overleaf:TL2025 supplement.tex
+%%
+%% Obsah je ve `supplement_body.tex` vedle, aby sel vlozit i do clanku.
+%% BibFile.bib vedle generuje make_all.py z references.py; styl elsarticle-num
+%% si TeX Live najde sam, kopie neni potreba.
+%% -------------------------------------------------------------------------
+\documentclass[a4paper,10pt]{article}
+\usepackage[margin=15mm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{booktabs}
+
+%% Poznamky pro spoluautory. Bez volby [show] se nesazi -- to je rezim
+%% odesilani. `\usepackage[show]{manuscriptnotes}` je vyvesi na okraj.
+\IfFileExists{manuscriptnotes.sty}{%
+  \usepackage{manuscriptnotes}%
+  %% V rezimu [show] potrebuji poznamky misto na okraji. V rezimu odesilani
+  %% zustava sazba presne takova, jaka pujde do casopisu.
+  \ifmanuscriptnotes\geometry{right=48mm,marginparwidth=40mm}\fi
+}{}
+
+\setlength{\parindent}{0pt}
+\pagestyle{plain}
+
+\begin{document}
+\providecommand{\tablesdir}{.}
+
+{\large\bfseries Supplementary material for\par}
+\smallskip
+{\large Feature selection and relevance of radiomic features for reperfusion prediction\par}
+\smallskip
+Petra Nemcekova, Jiri Chmelik, Tomas Vicar, Mahsa Mojtahedi, Henk A. Marquering, Roman Jakubicek
+\bigskip
+
+\input{supplement_body}
+
+\bibliographystyle{elsarticle-num}
+\bibliography{BibFile}
+\end{document}

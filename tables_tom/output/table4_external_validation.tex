@@ -1,0 +1,32 @@
+%% ---------------------------------------------------------------------------
+%% GENEROVANO: table4_external_validation.py
+%% Needitovat rucne -- zmeny prepise dalsi beh `python3 make_all.py`.
+%% Zdroje: final_test_results_all_folds_updated.csv
+%% ---------------------------------------------------------------------------
+{\footnotesize\setlength{\tabcolsep}{3pt}%
+\begin{tabular}{llllrrrrr}
+\toprule
+Feature set & ROI & Selector & Classifier & CV & CV & Reg. & Reg. & $\Delta$ \\
+ &  &  &  & AUC & ACC & AUC & ACC & AUC \\
+\midrule
+global       & whole      & LASSO         & XGBRF     & 0.667 & 0.643 & 0.492 & 0.490 & $-0.174$ \\
+global       & whole      & RFI           & XGBRF     & 0.643 & 0.607 & 0.471 & 0.490 & $-0.172$ \\
+global       & whole      & $\ell_1$ emb. & LinearSVC & 0.673 & 0.571 & 0.483 & 0.494 & $-0.190$ \\
+global       & whole      & RFI           & NuSVC     & 0.632 & 0.607 & 0.481 & 0.470 & $-0.150$ \\
+\midrule
+global       & centerline & LASSO         & XGBRF     & 0.406 & 0.500 & 0.483 & 0.535 & $+0.077$ \\
+global       & centerline & RFI           & XGBRF     & 0.400 & 0.500 & 0.521 & 0.505 & $+0.121$ \\
+global       & centerline & $\ell_1$ emb. & LinearSVC & 0.415 & 0.464 & 0.506 & 0.521 & $+0.091$ \\
+global       & centerline & RFI           & NuSVC     & 0.497 & 0.500 & 0.499 & 0.532 & $+0.002$ \\
+\midrule
+distribution & whole      & LASSO         & XGBRF     & 0.367 & 0.500 & 0.494 & 0.441 & $+0.128$ \\
+distribution & whole      & RFI           & XGBRF     & 0.651 & 0.571 & 0.482 & 0.448 & $-0.169$ \\
+distribution & whole      & $\ell_1$ emb. & LinearSVC & 0.500 & 0.517 & 0.504 & 0.472 & $+0.004$ \\
+distribution & whole      & RFI           & NuSVC     & 0.636 & 0.643 & 0.482 & 0.460 & $-0.154$ \\
+\midrule
+distribution & centerline & LASSO         & XGBRF     & 0.471 & 0.536 & 0.514 & 0.441 & $+0.044$ \\
+distribution & centerline & RFI           & XGBRF     & 0.450 & 0.517 & 0.497 & 0.448 & $+0.047$ \\
+distribution & centerline & $\ell_1$ emb. & LinearSVC & 0.559 & 0.517 & 0.499 & 0.550 & $-0.060$ \\
+distribution & centerline & RFI           & NuSVC     & 0.536 & 0.571 & 0.502 & 0.440 & $-0.034$ \\
+\bottomrule
+\end{tabular}}

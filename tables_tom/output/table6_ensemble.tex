@@ -1,0 +1,31 @@
+%% ---------------------------------------------------------------------------
+%% GENEROVANO: table6_ensemble.py
+%% Needitovat rucne -- zmeny prepise dalsi beh `python3 make_all.py`.
+%% Zdroje: Boosting_results/overall_metrics_summary.csv, final_test_results_all_folds_updated.csv
+%% ---------------------------------------------------------------------------
+{\scriptsize\setlength{\tabcolsep}{3pt}%
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.25\textwidth}r>{\raggedright\arraybackslash}p{0.30\textwidth}rr}
+\toprule
+Configuration & ACC $\varnothing$ & Best weak classifier & Its ACC $\varnothing$ & $\Delta$ \\
+\midrule
+\texttt{type1\_\allowbreak all\_\allowbreak featuresets}                                                               & 0.5039 & global/LASSO--XGBRF          & 0.6254 & $-0.121$ \\
+\midrule
+\texttt{type2\_\allowbreak distribution\_\allowbreak pair}                                                             & 0.5463 & distrib./RFI--NuSVC          & 0.6246 & $-0.078$ \\
+\texttt{type2\_\allowbreak global\_\allowbreak pair}                                                                   & 0.5611 & global/LASSO--XGBRF          & 0.6254 & $-0.064$ \\
+\midrule
+\texttt{type3\_\allowbreak distribution}                                                                               & 0.5820 & distrib./RFI--NuSVC          & 0.6246 & $-0.043$ \\
+\texttt{type3\_\allowbreak distribution\_\allowbreak skeleton}                                                         & 0.5323 & distrib.\ cent./LASSO--XGBRF & 0.5825 & $-0.050$ \\
+\texttt{type3\_\allowbreak global}                                                                                     & 0.5825 & global/LASSO--XGBRF          & 0.6254 & $-0.043$ \\
+\texttt{type3\_\allowbreak global\_\allowbreak skeleton}                                                               & 0.4887 & global cent./LASSO--XGBRF    & 0.5108 & $-0.022$ \\
+\midrule
+\texttt{type4\_\allowbreak distribution\_\allowbreak \_\allowbreak global}                                             & 0.5539 & global/LASSO--XGBRF          & 0.6254 & $-0.071$ \\
+\texttt{type4\_\allowbreak distribution\_\allowbreak \_\allowbreak global\_\allowbreak skeleton}                       & 0.5461 & distrib./RFI--NuSVC          & 0.6246 & $-0.079$ \\
+\texttt{type4\_\allowbreak distribution\_\allowbreak skeleton\_\allowbreak \_\allowbreak global}                       & 0.5468 & global/LASSO--XGBRF          & 0.6254 & $-0.079$ \\
+\texttt{type4\_\allowbreak distribution\_\allowbreak skeleton\_\allowbreak \_\allowbreak global\_\allowbreak skeleton} & 0.5113 & distrib.\ cent./LASSO--XGBRF & 0.5825 & $-0.071$ \\
+\midrule
+\texttt{type5\_\allowbreak all\_\allowbreak but\_\allowbreak distribution}                                             & 0.5754 & global/LASSO--XGBRF          & 0.6254 & $-0.050$ \\
+\texttt{type5\_\allowbreak all\_\allowbreak but\_\allowbreak distribution\_\allowbreak skeleton}                       & 0.5394 & global/LASSO--XGBRF          & 0.6254 & $-0.086$ \\
+\texttt{type5\_\allowbreak all\_\allowbreak but\_\allowbreak global}                                                   & 0.5318 & distrib./RFI--NuSVC          & 0.6246 & $-0.093$ \\
+\texttt{type5\_\allowbreak all\_\allowbreak but\_\allowbreak global\_\allowbreak skeleton}                             & 0.5468 & global/LASSO--XGBRF          & 0.6254 & $-0.079$ \\
+\bottomrule
+\end{tabular}}

@@ -1,0 +1,26 @@
+%% ---------------------------------------------------------------------------
+%% GENEROVANO: table2_hyperparameters.py
+%% Needitovat rucne -- zmeny prepise dalsi beh `python3 make_all.py`.
+%% Zdroje: heterogeneity@origin/public_branch:final/changed_pipeline/{RF,SVC}_{LASSO,RFI}_for_optimization.py
+%% ---------------------------------------------------------------------------
+{\footnotesize\setlength{\tabcolsep}{2.5pt}%
+\begin{tabular}{lllll}
+\toprule
+Pipeline & Component & Hyperparameter & Range & Scale \\
+\midrule
+LASSO--RF  & \texttt{Lasso} (S)       & \texttt{alpha}                & $0.5/\sqrt{n}$ -- $3/\sqrt{n}$ & log \\
+           & \texttt{XGBRF} (C)       & \texttt{n\_estimators}        & 100 -- 750                     & int \\
+           & \texttt{XGBRF} (C)       & \texttt{max\_depth}           & 1 -- 10                        & int \\
+\midrule
+LASSO--SVC & \texttt{LinearSVC} (S+C) & \texttt{C}                    & $0.5/\sqrt{n}$ -- $3/\sqrt{n}$ & log \\
+\midrule
+RFI--RF    & \texttt{XGBRF} (S)       & \texttt{number\_of\_features} & 1 -- \texttt{X.shape[1]}       & int \\
+           & \texttt{XGBRF} (S+C)     & \texttt{n\_estimators}        & 50 -- 500                      & int \\
+           & \texttt{XGBRF} (S+C)     & \texttt{max\_depth}           & 1 -- 10                        & int \\
+\midrule
+RFI--SVC   & \texttt{XGBRF} (S)       & \texttt{number\_of\_features} & 1 -- \texttt{X.shape[1]}       & int \\
+           & \texttt{XGBRF} (S)       & \texttt{n\_estimators}        & 50 -- 500                      & int \\
+           & \texttt{XGBRF} (S)       & \texttt{max\_depth}           & 1 -- 10                        & int \\
+           & \texttt{NuSVC} (C)       & \texttt{nu}                   & 0.05 -- minority fraction      & float \\
+\bottomrule
+\end{tabular}}
