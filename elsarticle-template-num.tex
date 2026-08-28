@@ -57,9 +57,10 @@
 
 % Manuscript notes: \NOTE, \NOTEWARN, \NOTECHECK, \NOTETODO, \NOTEQUERY.
 % Add [show] to display notes in the PDF.
+% Add [mark] to see colored highlits of notes.
 % \usepackage[show]{manuscriptnotes}
-\usepackage[]{manuscriptnotes}
-
+% \usepackage[]{manuscriptnotes}
+\usepackage[mark]{manuscriptnotes}
 
 
 
@@ -201,6 +202,7 @@ Radiomics \cite{Qiu2018}, a method enabling the extraction of a vast amount of i
 Qiu et al. \cite{Qiu2018} established a relationship between radiomic-based features and the efficacy of the recanalization with intravenous alteplase using NCCT and CTA images, along with the thrombus mask. Conversely, van Voorst et al. \cite{vanVoorst2022} identified the association of thrombus volume and texture with the number of retrieval attempts needed for successful reperfusion. However, they did not observe any additional value of thrombus radiomics compared to clinical baseline variables. Furthermore, Xie et al. \cite{Xie2022} revealed the association of wavelet-based radiomic features extracted from infarcted lesions on NCCT with hemorrhagic transformation after therapy in AIS. 
 
 These findings underscore the potential of radiomics as a valuable tool for extracting meaningful information from medical images, contributing to improved decision-making in the treatment of stroke patients. Even though there are many studies which focused on the prediction of the clinical outcome using extracted radiomic features, to the best of our knowledge, none of them exploited the potential of information hidden in the available data and used only the mean values of the extracted features from the thrombus. Our study focuses on the exploration of features at different levels of neighborhood influence. Moreover we investigate the influence of the segmentation size on the prediction success.
+
 
 
 
