@@ -205,6 +205,9 @@ These findings underscore the potential of radiomics as a valuable tool for extr
 
 
 
+
+
+
 \section{Methods}
 
 \subsection{Study cohorts and outcome definition}
@@ -255,26 +258,24 @@ Median cross-validated AUC across the 24 combinations ranged from 0.367 to 0.673
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=1\textwidth]{doc/05_07_auc_acc_method_fset.png}
-\caption{AUC (top) and ACC (bottom) distributions across all evaluated classifiers and feature sets. Results are grouped by feature set type: distribution-based, global-based, and voxel-based. Within each group, individual violin plots correspond to one classifier. The left half of each violin plot represents models trained on whole-thrombus features; the right half represents models trained on thrombus core features. RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}\label{fig.AUC_ACC_distributions_all}
+\caption{AUC (top) and ACC (bottom) distributions across the 24 evaluated selector--classifier--feature-set combinations. Results are grouped by feature set type: distribution-based, global-based, and voxel-based. Within each group, individual violin plots correspond to one selector--classifier combination. The left (blue) half of each violin plot represents models trained on whole-thrombus features; the right (orange) half represents models trained on features from the thrombus centerline dilated by 3~voxels. Dots represent the five individual folds and the horizontal bar represents the median. The dotted red line marks the chance level of~0.5. RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}
+\label{fig.AUC_ACC_distributions_all}
 \end{figure}
 
 
 
-
-a 
-
 % \subsection{Statistical significance against the permutation baseline}
 \subsection{Comparison against the permutation null}
+
 \label{sec:results:permutation}
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=1\textwidth]{doc/D4_diff_and_kappa_heatmap_all_fsets.png}
-\caption{Cohen's Kappa  RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}\label{fig.D3_cohens_kappa_heatmap_all_fsets}
+\caption{Performance of each model compared to its randomized variant. For every selector--classifier--feature-set combination, the labels of the test set were randomly shuffled 100~times, and the mean over these permutations is considered the performance of the random model. The top row shows the difference between the model and its randomized variant for AUC (left) and ACC (right). The bottom row shows the same comparison expressed as Cohen's~$\kappa$. Green cells represent combinations performing above their randomized variant, red cells below it. RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}
+\label{fig.D3_cohens_kappa_heatmap_all_fsets}
 \end{figure}
 
 
-\NOTE{note}
-\NOTETODO[text]{napsat ho}
 
 
 
@@ -286,8 +287,12 @@ a
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=1\textwidth]{doc/auc_acc_selected_vs_henk_pipeline_boxplot}
-
+\caption{AUC (top) and ACC (bottom) of the selected proposed combinations and of the reference pipeline of van~Voorst et al. \cite{vanVoorst2022}. Blue boxes represent the selected whole-thrombus distribution-based and global-based combinations. The yellow box represents a full replication of the reference pipeline, including its own feature selection. The green and pink boxes represent our RF and SVC classifiers trained on the fixed set of 52~ICC-filtered features reported in the reference work. Boxes show the median and the interquartile range over the five folds, and dots represent the individual folds. The dotted red line marks the chance level of~0.5. RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}
+\
 \end{figure}
+
+
+
 
 
 % \subsection{Internal cross-validation versus external validation}
@@ -336,7 +341,8 @@ In the case of the models using the distribution-based information, the median A
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=1\textwidth]{doc/spline_combined_dist_global.png}
-\caption{Dependence of the AUC (top) and ACC (bottom) on the number of selected features for models trained on whole-thrombus feature sets. Each point represents results achieved for a single split. Lines indicate linear regression trends fitted in log-space. RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}\label{fig.spline_combined_dist_global}
+\caption{Dependence of the AUC (top) and ACC (bottom) on the number of selected features for models trained on whole-thrombus feature sets. Each point represents results achieved for a single split. The number of selected features is shown on a logarithmic axis and ranges from 1 to more than $10^{3}$ out of 16528 features. Lines indicate linear regression trends fitted in log-space. RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}
+\label{fig.spline_combined_dist_global}
 \end{figure}
 
 According to Fig.~\ref{fig.spline_combined_dist_global}, it is visible that models trained on the global-based dataset reached comparable or higher performance when selecting fewer than 100 out of 16528 features than those selecting more than 1000 features. Since models which used LASSO for feature selection achieve comparable AUC and ACC as the ones using RFI selector, the usage of these models is recommended as there is lower order of selected features, thus lower computational demand. 
@@ -348,7 +354,9 @@ According to Fig.~\ref{fig.spline_combined_dist_global}, it is visible that mode
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=1\textwidth]{doc/boosted_vs_raw_accuracy_heatmap.png}
-\caption{ RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}\label{fig.boosted_vs_raw_accuracy_heatmap}
+\caption{Accuracy of the boosted models and its difference from the individual models they combine. Columns represent the 15~evaluated ensemble configurations, ordered from configurations built on a single feature set (\emph{type3}, left of the divider) to configurations combining several feature sets (\emph{type1}, \emph{type2}, \emph{type4} and \emph{type5}). The top block shows the accuracy of the boosted model, both overall (\emph{mean accuracy}) and, for the configurations built on a single feature set, separately for each selector--classifier combination used as the weak learner. The shaded cells are not defined for the configurations combining several feature sets. The bottom strip shows the difference between the boosted model and the best individual model of the same configuration. RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}
+
+\label{fig.boosted_vs_raw_accuracy_heatmap}
 \end{figure}
 
  
@@ -368,10 +376,10 @@ Registry - different population, older scanners
 \bibliography{BibFile}
 
 
-\clearpage
-\newgeometry{margin=15mm}
-\input{tables_tom/output/supplement_body}
-\restoregeometry
+% \clearpage
+% \newgeometry{margin=15mm}
+% \input{tables_tom/output/supplement_body}
+% \restoregeometry
 
 
 

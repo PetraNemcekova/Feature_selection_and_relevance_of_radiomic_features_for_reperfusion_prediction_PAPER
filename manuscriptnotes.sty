@@ -16,6 +16,11 @@
 %
 %     \usepackage[show]{manuscriptnotes}
 %
+% To highlight only the anchored manuscript text, without typesetting the
+% notes themselves in the margin, use:
+%
+%     \usepackage[mark]{manuscriptnotes}
+%
 %
 % NOTE COMMANDS
 % -------------
@@ -94,6 +99,22 @@
 % the corresponding note-type label.
 %
 %
+% With only the anchors marked:
+%
+%     \usepackage[mark]{manuscriptnotes}
+%
+% the bracketed span is coloured in the note-type colour, but nothing is
+% put in the margin. Page breaks therefore stay exactly where they are in
+% the clean manuscript, so this mode is useful for reading the paper the
+% way a reviewer would while still seeing which passages carry a note.
+%
+% The three modes are:
+%
+%     hide (default)   plain text        no margin notes
+%     mark / anchors   coloured text     no margin notes
+%     show             coloured text     margin notes
+%
+%
 % WHY COMMANDS INSTEAD OF % COMMENTS?
 % -----------------------------------
 %
@@ -159,27 +180,53 @@
 % ============================================================================
 % PACKAGE OPTIONS
 %
-% Default:
+% Default / submission:
 %
 %     \usepackage{manuscriptnotes}
 %
-% Notes are hidden.
+% Nothing is added; the anchored text is typeset as plain manuscript text.
+%
+%
+% Reading version:
+%
+%     \usepackage[mark]{manuscriptnotes}
+%
+% The anchored text is coloured, but the notes are not typeset, so the
+% layout is identical to the submission version.
 %
 %
 % Working version:
 %
 %     \usepackage[show]{manuscriptnotes}
 %
-% Notes are shown in the margin.
+% The anchored text is coloured and the notes are shown in the margin.
 % ============================================================================
 
-\newif\ifmanuscriptnotes
-\manuscriptnotesfalse
+% Two independent switches:
+%
+%   \ifmanuscriptnotescolor   anchored manuscript text is coloured
+%   \ifmanuscriptnotesmargin  the note itself is typeset in the margin
 
-\DeclareOption{show}{\manuscriptnotestrue}
-\DeclareOption{hide}{\manuscriptnotesfalse}
+\newif\ifmanuscriptnotescolor
+\newif\ifmanuscriptnotesmargin
+\manuscriptnotescolorfalse
+\manuscriptnotesmarginfalse
+
+% show   = coloured anchors + margin notes
+\DeclareOption{show}{\manuscriptnotescolortrue\manuscriptnotesmargintrue}
+
+% mark   = coloured anchors only, margin notes suppressed
+\DeclareOption{mark}{\manuscriptnotescolortrue\manuscriptnotesmarginfalse}
+\DeclareOption{anchors}{\manuscriptnotescolortrue\manuscriptnotesmarginfalse}
+
+% hide   = clean manuscript, nothing added (default)
+\DeclareOption{hide}{\manuscriptnotescolorfalse\manuscriptnotesmarginfalse}
 
 \ProcessOptions\relax
+
+% Backwards compatibility: \ifmanuscriptnotes used to mean "show".
+\newif\ifmanuscriptnotes
+\ifmanuscriptnotesmargin\manuscriptnotestrue\fi
 
 
 % ============================================================================
@@ -192,8 +239,12 @@
 % ============================================================================
 
 \newcommand{\shownote}[4]{%
-  \ifmanuscriptnotes
+  \ifmanuscriptnotescolor
     \textcolor{#1}{#2}%
+  \else
+    #2%
+  \fi
+  \ifmanuscriptnotesmargin
     \marginpar{%
       \raggedright
       \footnotesize
@@ -201,8 +252,6 @@
       {\large\bfseries #3}\par
       #4\par
     }%
-  \else
-    #2%
   \fi
 }
 
