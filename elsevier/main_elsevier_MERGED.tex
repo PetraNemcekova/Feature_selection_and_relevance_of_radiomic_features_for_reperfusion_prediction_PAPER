@@ -1,0 +1,553 @@
+%% ============================================================================
+%%
+%% Copyright 2007-2024 Elsevier Ltd
+%%
+%% This file is part of the 'Elsarticle Bundle'.
+%% ---------------------------------------------
+%%
+%% It may be distributed under the conditions of the LaTeX Project Public
+%% License, either version 1.3 of this license or (at your option) any
+%% later version.  The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 1999/12/01 or later.
+%%
+%% The list of all files belonging to the 'Elsarticle Bundle' is
+%% given in the file `manifest.txt'.
+%%
+%% Template article for Elsevier's document class `elsarticle'
+%% with numbered style bibliographic references
+%% SP 2008/03/01
+%% $Id: elsarticle-template-num.tex 249 2024-04-06 10:51:24Z rishi $
+%%
+\documentclass[preprint,12pt]{elsarticle}
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[authoryear,preprint,review,12pt]{elsarticle}
+
+%% Use the options 1p,twocolumn; 3p; 3p,twocolumn; 5p; or 5p,twocolumn
+%% for a journal layout:
+%% \documentclass[final,1p,times]{elsarticle}
+%% \documentclass[final,1p,times,twocolumn]{elsarticle}
+%% \documentclass[final,3p,times]{elsarticle}
+%% \documentclass[final,3p,times,twocolumn]{elsarticle}
+%% \documentclass[final,5p,times]{elsarticle}
+%% \documentclass[final,5p,times,twocolumn]{elsarticle}
+
+%% For including figures, graphicx.sty has been loaded in
+%% elsarticle.cls. If you prefer to use the old commands
+%% please give \usepackage{epsfig}
+
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+%% The amsmath package provides various useful equation environments.
+\usepackage{amsmath}
+%% The amsthm package provides extended theorem environments
+%% \usepackage{amsthm}
+%\usepackage{geometry}
+%\usepackage{booktabs}
+%\usepackage{array}
+%
+%% Manuscript notes: \NOTE, \NOTEWARN, \NOTECHECK, \NOTETODO, \NOTEQUERY.
+%% Add [show] to display notes in the PDF.
+%% Add [mark] to see colored highlits of notes.
+%% \usepackage[show]{manuscriptnotes}
+%% \usepackage[]{manuscriptnotes}
+%\usepackage[mark]{manuscriptnotes}
+%%% NOTE: template-num.tex's \NOTETODO / \NOTECHECK markers throughout the
+%%% document only render/highlight if this package is loaded. If you keep
+%%% any restored \NOTETODO/\NOTECHECK blocks below active, you need this
+%%% package active too (it degrades gracefully to nothing if not loaded,
+%%% since those commands won't be defined — check before compiling).
+%%% >>>>>>> end conflict
+
+%% The lineno packages adds line numbers. Start line numbering with
+%% \begin{linenumbers}, end it with \end{linenumbers}. Or switch it on
+%% for the whole article with \linenumbers.
+%% \usepackage{lineno}
+
+
+
+
+\journal{Computerized Medical Imaging and Graphics}
+
+\usepackage[mark]{manuscriptnotes}
+
+\begin{document}
+
+\begin{frontmatter}
+
+%% Title, authors and addresses
+
+%% use the tnoteref command within \title for footnotes;
+%% use the tnotetext command for theassociated footnote;
+%% use the fnref command within \author or \affiliation for footnotes;
+%% use the fntext command for theassociated footnote;
+%% use the corref command within \author for corresponding author footnotes;
+%% use the cortext command for theassociated footnote;
+%% use the ead command for the email address,
+%% and the form \ead[url] for the home page:
+%% \title{Title\tnoteref{label1}}
+%% \tnotetext[label1]{}
+%% \author{Name\corref{cor1}\fnref{label2}}
+%% \ead{email address}
+%% \ead[url]{home page}
+%% \fntext[label2]{}
+%% \cortext[cor1]{}
+%% \affiliation{organization={},
+%%             addressline={},
+%%             city={},
+%%             postcode={},
+%%             state={},
+%%             country={}}
+%% \fntext[label3]{}
+
+
+\title{Feature selection and relevance of radiomic features for reperfusion prediction}
+
+
+%% use optional labels to link authors explicitly to addresses:
+%% \author[label1,label2]{}
+%% \affiliation[label1]{organization={},
+%%             addressline={},
+%%             city={},
+%%             postcode={},
+%%             state={},
+%%             country={}}
+%%
+%% \affiliation[label2]{organization={},
+%%             addressline={},
+%%             city={},
+%%             postcode={},
+%%             state={},
+%%             country={}}
+
+\author[FEEC]{Petra~Nemcekova}
+\author[FEEC]{Jiri~Chmelik}
+\author[FEEC]{Tomas~Vicar}
+\author[UMC]{Mahsa~Mojtahedi}
+\author[DRUMC]{Agnetha E Bruggeman},
+\author[UMC]{Henk van Voorst}
+\author[NICOLAB]{Elena Ponomareva}
+\author[DRUMC]{Manon Kappelhof}
+\author[DRNM]{Aad van der Lugt}
+\author[DRUMC]{Jan W Hoving}
+\author[DRUMC]{Bruna G Dutra}
+\author[DN]{Diederik Dippel}
+\author[DRUMC]{Fabiano Cavalcante}
+\author[DRCZ]{Lonneke Yo}
+\author[DNUMC]{Jonathan Coutinho}
+\author[DNUMC]{Josje Brouwer}
+\author[RBRNM, DRH]{Kilian Treurniet}
+\author[UMC]{Manon L Tolhuisen}
+\author[DNUMC]{Natalie LeCouffe}
+\author[UMC, DRUMC]{Nerea Arrarte Terreros}
+\author[UMC, DRUMC]{Praneeta R Konduri}
+\author[DRNMM]{Wim van Zwam}
+\author[DNUMC]{Yvo Roos}
+\author[DRUMC]{Charles B L M Majoie}
+\author[DRUMC]{Bart J Emmer}
+\author[FEEC]{Roman~Jakubicek}
+\author[UMC]{Henk~A.~Marquering}
+
+
+\affiliation[FEEC]{organization={Department of Biomedical Engineering and Bioinformatics, Brno University of Technology},%Department and Organization
+            addressline={Technická 3082/12},
+            city={Brno},
+            postcode={61200},
+            state={Czech Republic},
+            country={Czech Republic}}
+\affiliation[UMC]{organization={Department of Biomedical Engineering and Physics, Amsterdam University Medical Centers},%Department and Organization
+            addressline={Meibergdreef 9},
+            city={Amsterdam},
+            postcode={1105 AZ},
+            state={Netherlands},
+            country={Netherlands}}
+\affiliation[DRUMC]{organization={Department of Radiology and Nuclear Medicine, Amsterdam University Medical Centers},%Department and Organization
+            addressline={Meibergdreef 9},
+            city={Amsterdam},
+            postcode={1105 AZ},
+            state={Netherlands},
+            country={Netherlands}}
+\affiliation[NICOLAB]{organization={Nicolab},%Department and Organization
+            addressline={Paasheuvelweg 25},
+            city={Amsterdam},
+            postcode={1105 BP},
+            state={Netherlands},
+            country={Netherlands}}
+\affiliation[DRNM]{organization={Department of Radiology and Nuclear Medicine, Erasmus MC},%Department and Organization
+            addressline={Dr. Molewaterplein 40},
+            city={Rotterdam},
+            postcode={3015 GD},
+            state={Netherlands},
+            country={Netherlands}}
+\affiliation[DN]{organization={ Department of Neurology, Erasmus MC UMC},%Department and Organization
+            addressline={Dr. Molewaterplein 40},
+            city={Rotterdam},
+            postcode={3015 GD},
+            state={Netherlands},
+            country={Netherlands}}
+\affiliation[DRCZ]{organization={Department of Radiology, Catharina Ziekenhuis},%Department and Organization
+            addressline={Michelangelolaan 2},
+            city={Eindhoven},
+            postcode={5623 EJ},
+            state={Netherlands},
+            country={Netherlands}}
+\affiliation[DNUMC]{organization={Department of Neurology, Amsterdam UMC},%Department and Organization
+            addressline={Meibergdreef 9},
+            city={Amsterdam},
+            postcode={1105 AZ},
+            state={Netherlands},
+            country={Netherlands}}
+\affiliation[RBRNM]{organization={Research Bureau of Radiology and Nuclear Medicine, Amsterdam UMC},%Department and Organization
+            addressline={Van der Boechorststraat 6a},
+            city={Amsterdam},
+            postcode={1105 AZ},
+            state={Netherlands},
+            country={Netherlands}}
+\affiliation[DRH]{organization={Department of Radiology, The Hague Medical Center},%Department and Organization
+            addressline={Lijnbaan 32},
+            city={The Hague},
+            postcode={2262 BA},
+            state={Netherlands},
+            country={Netherlands}}
+\affiliation[CARIM]{organization={Department of Radiology and Nuclear Medicine, Maastricht UMC, Cardiovascular Research Institute Maastricht (CARIM)},%Department and Organization
+            addressline={UNS 50, Universiteitssingel 50},
+            city={Maastricht},
+            postcode={6229 HX},
+            state={Netherlands},
+            country={Netherlands}}
+
+\cortext[cor1]{jakubicek@vut.cz}
+
+%% Abstract
+\begin{abstract}
+
+Background and Objectives
+% - 1 veta background (prečo je predikcia eTICI≥2B klinicky relevantná)
+% - 1 veta gap (van Voorst 2023 = jedna kombinácia feature selection/klasifikátora, žiadne systematické porovnanie)
+Methods
+% - 1–2 vety metóda (rozsah faktoriálneho dizajnu: X feature-set × Y metód, CV + externá validácia, permutačný test)
+Results
+% - 2–3 vety kľúčové výsledky (čísla AUC, štatistická signifikancia vs. chance)
+Conclusions
+% - 1 veta záver/implikácia — či voľba feature-selection metódy mení klinický záver
+
+\end{abstract}
+
+%%Graphical abstract
+\begin{graphicalabstract}
+%\NOTETODO{JCh}
+%\includegraphics{grabs}
+\end{graphicalabstract}
+
+%% Keywords
+\begin{keyword}
+brain stroke \sep thrombus \sep radiomics \sep CT \sep feature selection
+%% PACS codes here, in the form: \PACS code \sep code
+87.19.xq \sep 87.57.Q
+%% MSC codes here, in the form: \MSC code \sep code
+%% or \MSC[2008] code \sep code (2000 is the default)
+
+\end{keyword}
+
+%%Research highlights
+\begin{highlights} %% Highlights should consist of 3 to 5 bullet points, each a maximum of 85 characters, including spaces.
+\item Research highlight 1 - Predictive Trained models
+\item Research highlight 2 - Trained models freely available and repository
+\item Research highlight 3 - Explore the influence of the method and dataset to prediction accuracy ?
+\item Research highlight 4 - Explore the influence of segmentation size to prediction accuracy ?
+\end{highlights}
+
+
+\end{frontmatter}
+
+%% Add \usepackage{lineno} before \begin{document} and uncomment
+%% following line to enable line numbers
+% \usepackage{lineno}
+% \linenumbers
+
+%% main text
+%%
+
+%% Use \section commands to start a section
+\section{Introduction}
+\label{sec1}
+
+% - Klinický kontext: EVT pri veľkocievnom uzávere, eTICI škála ako outcome, prečo je predikcia úspešnosti reperfúzie klinicky užitočná (voľba stratégie/zariadenia, informovanie pacienta/tímu, procedurálne plánovanie)
+
+Acute ischemic stroke (AIS) is caused by loss of blood circulation in a specific area of the brain due to an occlusion of an intracranial artery and is one of the leading causes of mortality in the world \cite{Phipps2020}. The prognosis of the patient depends on, amongst others, the findings of neuroimaging, which consists of non-contrast computed tomography (NCCT) and computed tomography angiography (CTA).
+
+Nowadays, possible treatment options for AIS include endovascular treatment (EVT), indicated in patients with large vessel occlusion (LVO), and intravenous thrombolysis \cite{Powers2020}.\NOTECHECK[However, there is currently no protocol to determine which treatment will be most beneficial for the patient, and the final decision is dependent on radiologists' experience.]{protokol je, není nástorj na odhadnutí..to vyzníva blbě} Since each patient with suspected AIS undergoes CT imaging, recent studies have been exploring the potential of leveraging CT-derived imaging features to improve treatment prediction. For this, extraction of appropriate image features from CT scans may be crucial to reveal the connection between the image and clinical outcome. The information about the amount of the reperfusion is quantified by the Extended Thrombolysis In Cerebral Infarction (eTICI) score, it has therefore been suggested as a suitable parameter for differentiating between the successful reperfusion (SRP) and non-successful reperfusion (nSRP). An estimate of the likelihood of reperfusion based on pre-treatment data could aid procedural planning and help maximize the benefit of EVT for the patient.
+
+% - State of the art zameraný na: (a) radiomika trombu vo všeobecnosti, 
+
+Radiomics \NOTECHECK[\cite{Qiu2018}]{Gillies2016 nebo Aerts2014?}, a method enabling the extraction of a vast amount of information from image data, has garnered attention. This approach involves the extraction of numerous image features, including first-order statistics, gray level run length matrices, neighboring gray tone difference matrices, and shape-based characteristics of the region of interest, which are imperceptible to the human eye. 
+Hofmeister et al. \cite{Hofmeister2020} demonstrated on 47 patients the efficacy of clot-based radiomic features in predicting the mechanical thrombectomy strategy for successful recanalization of patients with AIS. 
+Qiu et al. \cite{Qiu2018} established a relationship between radiomic-based features and the efficacy of the recanalization with intravenous alteplase using NCCT and CTA images, along with the thrombus mask. These findings underscore the potential of radiomics as a valuable tool for extracting meaningful information from medical images, contributing to improved decision-making in the treatment of stroke patients. 
+
+% (b) konkrétne van Voorst et al. 2023 — čo urobili, aké AUC dosiahli pre eTICI≥2B (~0.52–0.56, teda blízko náhode), aký feature-selection použili (ICC≥0.75 filter, RF, žiadny ďalší výber príznakov) 
+
+In this context, van Voorst et al. \cite{vanVoorst2022} identified the association of thrombus volume and texture with the number of retrieval attempts needed for successful reperfusion, selecting features with an intraclass correlation coefficient (ICC)$\geq$0.75 and using the random forest classifier (RF). However, they did not observe any additional value of thrombus radiomics for the prediction of the reperfusion (eTICI$\geq$2B, AUC 0.52) compared to clinical baseline variables (eTICI$\geq$2B AUC 0.56). 
+
+% - Gap/limitácia predchádzajúcej práce: jedna pevná kombinácia feature-selection + klasifikátor; žiadne porovnanie granularity príznakov (voxel/distribution/global, whole vs. skeleton); žiadny permutačný test proti empirickému chance-baseline; žiadne overenie, či iná metóda výberu príznakov (Lasso/RFI) alebo klasifikátor (SVC) zmenia záver
+
+Even though there are many studies which focused on the prediction of the clinical outcome using extracted radiomic features, to the best of our knowledge, \NOTECHECK[none of them exploited the potential of information hidden in the available data and used only the mean values of the extracted features from the thrombus.]{nemyslím si že je pravda} Moreover, none of the studies used supervised feature selection algorithms and based the feature selection purely on the removal of features which include similar information based on strictly defined threshold without further investigation.   
+
+
+% - Research question / hypotézy — formulovať explicitne, napr.:
+%   - Ovplyvňuje voľba metódy výberu príznakov a granularity feature-setu diskriminačný výkon pri predikcii eTICI≥2B?
+Our study focuses on several tightly dependent hypotheses. First of all, 
+Our study focuses on the exploration of features at different spatial scales, from global thrombus-level descriptors to single voxels. Moreover, we investigate the influence of the segmentation size on the prediction success.
+
+%   - Zlepší kombinovanie (ensemble/boosting) viacerých slabých modelov výkon nad rámec ktorejkoľvek jednotlivej pipeline?
+
+% - Príspevky/novelty (mapujú sa priamo na Highlights) — systematickosť dizajnu, permutačný baseline namiesto flat 0.5, externá validácia, ensemble analýza ako „stress test" záveru
+
+% - Slovo eTICI se v celem beznem textu neobjevi ani jednou, jen v komentarich. Ctenar tedy nevi, co vlastne predikujeme. Definovat skalu (Zaidat2013) a rict, ze cilime na 2C/3, ne na >= 2B. Duvod pro prisnejsi rez dodá LeCouffe2020 (aOR 1,34 na kazdy stupen).
+
+% - roc je predoperacni odhad vubec k necemu. Reperfuze na prvni pokus ma lepsi funkcni vysledek nez po opakovanych pokusech (Zaidat2018), takze odhad predem informuje planovani.
+
+% - ozptyl publikovanych vysledku: van Voorst 0,52 pro >= 2B, Xiong2023 0,850, Zhao2026 0,86, Yan2026 0,847 pro klot proti 0,719. Ruzne endpointy, ruzne ROI, ruzne selektory.
+
+% - Nikde nestoji, proc bereme obe modality. NCCT nese podil erytrocytu (Liebeskind2011), kontrastni prirustek na CTA jde opacnym smerem (Cruts2023: fibrin 31-38 HU a prirustek 82-127 HU proti RBC 72-89 HU a prirustku 3-17 HU). 
+
+% - říct že je potřeba permutační baseline - a clanky to nedělají...motivace důležitosti tothoto
+
+% - chybi explicitni otazky a prispevky - permutacni baseline misto plosne 0,5, externi validace, ensemble
+
+\section{Dataset}
+\subsection{Study cohorts and outcome definition}
+
+% 2.1 Study cohorts and outcome definition
+% - Popis kohort (interná CV kohorta „NOIV" vs. externá „REGISTRY"), veľkosti, in/exclusion
+For the purpose of this study, multicenter data from the MR CLEAN NO-IV trial dataset~\cite{Jansen2018}, including 539 patients with both NCCT and CTA scans and large vessel occlusion (LVO), were used to train the models. Moreover, to increase the reliability of the study, the MR CLEAN Registry database~\cite{IvoGHJansen20180309} was used for feature reproducibility and model robustness testing.
+
+% - eTICI≥2B ako binárny outcome, kto/ako labeloval
+
+The patient exclusion criteria for both datasets are described in \cite{Mojtahedi2024}. As reported in \cite{Nemcekova2025}, an additional exclusion step was required due to the feature extraction process, which reduced the NO-IV dataset to 296 patients and the Registry database from 2597 to 1906 patients (16 missing TICI value, 575 missing segmentation, 100 spacing above 1 mm). Since the NO-IV dataset was used for model training, it was manually verified, and cases with inappropriate segmentation locations or multiple separated thrombus parts were excluded to ensure values from the valid image parts were used, reducing the training dataset to 141 patients.
+
+The ratio of patients with successful reperfusion (SRP) and non-successful reperfusion (nSRP) was randomly selected, resulting in the final training dataset consisting of 82 of patients with SRP and 59 of patients with nSRP, which preserves the real ratio of patients in each group.
+
+%%% This text is identical word-for-word in both drafts — no conflict.
+
+\section{Methods}
+
+\subsection{Data preparation ...}
+
+Since the database includes images from different scanners and therefore various resolutions, resampling the data to the same isotropic voxel size of~0.5~mm was crucial to ensure that the same amount of information is provided by each voxel. To prevent the impact of the marginal effects of the mask features and thus extract relevant feature values for whole thrombus, dilated segmentation mask was used for the feature extraction. A total of 1204 voxel-based features were extracted from both NCCT and CTA images using the PyRadiomics toolbox~\cite{VanGriethuysen20171031} with custom parameter settings described in the supplementary file \textit{PyradiomicsConfig.yaml}. Features with empty values were excluded before feature selection. This occurred due to the small size of the thrombus, which made the use of large filter masks useless.
+
+According to our preliminary study~\cite{Nemcekova2024}, determining the borders of the thrombus is challenging, and even experienced radiologists do not fully agree on the size of the segmented thrombi. Uncertain thrombus segmentation boundaries may introduce unwanted information from the clot neighborhood, thereby mixing information from two different tissues, which may lead to information loss. To investigate the influence of segmentation size, and specifically the impact of edge voxels on the prediction, only voxels located on the thrombus centerline dilated by 3 voxels were selected. 
+
+To explore the feature potential of information contribution, extraction of three feature sets at different levels of neighborhood influence was applied: voxel-based, distribution-based and global-based. \textbf{The voxel-based set} included 2066 feature values for each thrombus voxel. The \textbf{distribution-based set} was derived from the probability density across 10 bins of thrombus feature histogram, which resulted in 20660 extracted features per patient. The \textbf{global-based set}, was based on global statistics computed from the feature values of the entire thrombus, including the voxel count, mean, standard deviation, minimum, maximum and the 25\%, 50\% and 75\% percentiles. Therefore, global based dataset included 16528 feature values per patient. As a result, six datasets (three feature set types and two region sizes) were used for the analysis.
+
+To ensure that the division of the dataset into training and test sets did not affect the reproducibility of the predictions, the dataset was split into five non-overlapping training and testing folds. Each feature set underwent preprocessing, including z-score normalization based on the training set.
+
+To define radiomic features that introduce an additional information for the diagnostic establishment and thus for the clinicians, the classification of the SRP/nSRP using the extracted features was performed. Since radiomics offers a large number of extracted features some of which may be redundant and may lead to model overfitting, feature selection was performed using two different methods. Feature selection using the Least Absolute Shrinkage and Selection Operator (LASSO) removed features with the coefficient value equal to zero. Second type of feature selection kept only predefined number of features with the highest XGBoost Random Forest Classifier Importance (RFI).
+
+To ensure the selected classification method does not influence the outcome accuracy, a Support Vector Classifier (SVC) and XGBoost Random Forest Classifier (RF) were used.  All possible combinations of the selectors and classifiers were trained, resulting in four prediction method types (LASSO-SVC, LASSO-RF, RFI-SVC, and RFI-RF). This ensures that the definition of the most appropriate combination of the selector and classifier for this problem is established.
+
+Parameter tuning was performed using Bayesian optimization with 20 trials. Feature selection and classifier training were treated as a single pipeline. Therefore, the Bayesian optimization was applied separately for each split, resulting in 120 trained models (3 dataset types x 2 area sizes x 5 folds x 4 methods), each with its own optimized parameter set and selected feature subset. Moreover, since the availability of independent testing dataset, optimization and training of all-fold models was performed. To support the green learning, only models for distribution and global based datasets were trained, since all of the models using voxel based dataset resulted in the prediction of the same label. This resulted to the creation of additional 16 all-fold (2 dataset types - distribution and global based x 2 area sizes x 1 fold x 4 methods) models which used the information from the whole NOIV dataset for training. The regularization parameter range for LASSO was defined according to Bickel et al., 2009 \cite{Bickel200981}. For the RFI selector, the number of features N was optimized, so that the top N features with sorted RFI values were selected. Detailed information about parameter setting and optimization may be seen in Table \textit{A1}.
+
+To verify the influence of the feature set granularity and method used to establish the model performance, the predictivity of each model was determined separately. Using the permutation null-baseline analysis the investigation whether the trained model performance is higher than its stochastic variant. This consisted of shuffeling testing data labels before the ACC and AUC computation. These metrics were then used for the computation of the Cohen's Kappa as the metrics value of the random model instead of using a default value of 0.5.
+To verify the possible predictive performance increase caused by the model combination, all combinations of models were provided to the boosting algorithm. Additional 16 boosted models were trained followed by the performance analysis.
+
+The predictivity of all-fold models was determined using the independent testing database only.
+
+All trained models are freely available on and the framework is available on GitHub %\NOTETODO{PN}.
+
+\subsection{Statistical analysis}
+%\NOTETODO[dopsat statistickou analýzu]{domluvíme se ještě co všechno dodělat, a podle toho...}
+
+\section{Discussion}
+
+
+% \subsection{Performance across the feature-selection framework}
+\subsection{Performance across selector–classifier–feature-set combinations}
+\label{sec:results:factorial}
+
+
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{doc/05_07_auc_acc_method_fset.png}
+\caption{AUC (top) and ACC (bottom) distributions across the 24 evaluated selector--classifier--feature-set combinations. Results are grouped by feature set type: distribution-based, global-based, and voxel-based. Within each group, individual violin plots correspond to one selector--classifier combination. The left (blue) half of each violin plot represents models trained on whole-thrombus features; the right (orange) half represents models trained on features from the thrombus centerline dilated by 3~voxels. Dots represent the five individual folds and the horizontal bar represents the median. The dotted red line marks the chance level of~0.5. RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}
+\label{fig.AUC_ACC_distributions_all}
+\end{figure}
+
+
+
+This section establishes how much the choice of selector, classifier, feature set and region of interest alone can move discriminative performance within a single development cohort, before any of these results is compared with a null model or with the reference pipeline. Fig.~\ref{fig.AUC_ACC_distributions_all} shows the resulting distributions and \NOTETODO[Table SXXX]{udelat tabulku se statistikama do suplementu} lists the per-combination values.
+
+
+Median cross-validated AUC across the 24 combinations ranged from 0.367 to 0.673, the four whole-thrombus global combinations being the highest as a group (0.632--0.673) and no centerline combination of either patient-level set exceeding 0.559.
+
+Accuracy has to be read against the majority-class accuracy of the development cohort ($82/141 = 0.582$) and not against 0.5: only 4 of the 24 combinations exceeded it by median accuracy, and because the proportion of successful reperfusion varied between 0.448 and 0.714 across the outer folds, accuracy is meaningful only fold-wise.
+
+
+Restricting the region of interest to the dilated centerline removed the discrimination present on the whole thrombus in the global-based set, where all four combinations fell from 0.632--0.673 to below chance (0.400--0.497); in the distribution-based set the effect was not consistent, the two combinations that had discriminated on the whole thrombus losing that discrimination while the two that had not changed little.
+
+
+
+
+\NOTETODO[voxel agregace]{majority-vote na pacienta z voxelovych predikci -- teprve pak jsou voxelove radky srovnatelne s pacientskymi}
+
+\NOTETODO[CI]{bootstrap CI pro AUC -- potreba per-pacientske skore nasich modelu na CV foldech, v datech nejsou}
+
+
+
+
+
+
+% \subsection{Statistical significance against the permutation baseline}
+\subsection{Comparison against the permutation null}
+
+\label{sec:results:permutation}
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{doc/D4_diff_and_kappa_heatmap_all_fsets.png}
+\caption{Performance of each model compared to its randomized variant. For every selector--classifier--feature-set combination, the labels of the test set were randomly shuffled 100~times, and the mean over these permutations is considered the performance of the random model. The top row shows the difference between the model and its randomized variant for AUC (left) and ACC (right). The bottom row shows the same comparison expressed as Cohen's~$\kappa$. Green cells represent combinations performing above their randomized variant, red cells below it. RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}
+\label{fig.D3_cohens_kappa_heatmap_all_fsets}
+\end{figure}
+
+
+
+This section asks whether the performance reported above exceeds what the same pipeline achieves on randomised outcome labels, because a flat chance level of 0.5 is only an assumption about where a random model would land and need not hold for every metric or every unit of analysis. Fig.~\ref{fig.D3_cohens_kappa_heatmap_all_fsets} shows each combination against its own null.
+
+\NOTETODO[pospat princip statistiky tady počítané]{dodělat statistiku a podle toho upravit}
+% The null was built separately for every combination by permuting the patient-level outcome labels 100 times within each outer test fold, holding the selected features and the fitted classifier fixed, and the test statistic was the mean AUC over the five folds; with 100 permutations the smallest attainable $p$-value is 0.0099, and because the model is not refitted the null does not absorb the optimism of feature selection and tuning.
+
+
+
+\NOTECHECK[For AUC, 6 of the 16 patient-level combinations reached $p < 0.05$ uncorrected, all of them on the whole thrombus and with $\kappa$ between $+0.225$ and $+0.359$, three of them at the resolution floor of $p = 0.0099$.]{předběžná čísla - můžou se změnit, pak dopsat i pro ACC}
+
+
+
+
+
+
+
+
+
+
+
+
+% \subsection{Replication of the reference pipeline}
+\subsection{Comparison against the reference pipeline}
+
+\label{sec:results:reference}
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{doc/auc_acc_selected_vs_henk_pipeline_boxplot}
+\caption{AUC (top) and ACC (bottom) of the selected proposed combinations and of the reference pipeline of van~Voorst et al. \cite{vanVoorst2022}. Blue boxes represent the selected whole-thrombus distribution-based and global-based combinations. The yellow box represents a full replication of the reference pipeline, including its own feature selection. The green and pink boxes represent our RF and SVC classifiers trained on the fixed set of 52~ICC-filtered features reported in the reference work. Boxes show the median and the interquartile range over the five folds, and dots represent the individual folds. The dotted red line marks the chance level of~0.5. RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}
+\label{fig.auc_acc_selected_vs_henk_pipeline}
+\end{figure}
+
+This section asks whether the modest discrimination reported so far is a property of thrombus radiomics in this cohort or of the analysis choices made here, by recomputing a published pipeline for the same task on the same patients and the same folds and placing it next to the proposed combinations. Fig.~\ref{fig.auc_acc_selected_vs_henk_pipeline} places the two side by side and \NOTETODO[Table SXXX]{srovnani s referencni pipeline} lists the fold-wise differences.
+
+
+
+
+
+
+% \subsection{Internal cross-validation versus external validation}
+\subsection{External validation on the MR CLEAN Registry}
+
+\label{sec:results:external}
+\begin{table}[]
+    \centering
+    \begin{tabular}{c|c}
+         &  \\
+         & 
+    \end{tabular}
+    \caption{Caption}
+    \label{tab:placeholder}
+\end{table}
+
+
+
+This section asks whether any of the pipelines retains its discriminative performance once it is moved to a cohort it was not developed on, which is the question that cross-validation within a single curated dataset cannot answer. \NOTETODO[Table SXXX]{externi validace CV median vs. Registry vcetne delta AUC -- table4_external_validation, nahradit prazdnou tab:placeholder} lists the cross-validated and the external values side by side.
+
+
+
+\NOTETODO[statistika do tabulky]{tabulka porovnani naseho nejlepsiho modelu vs. jeho permutacni varianty vcetne statistickeho testu + porovnat Henkuv s nasim na stejnem setu z Registry + statisticky test - zkusit pouzit bagging?}
+
+
+
+
+
+\section{Discussion}
+
+The prediction accuracies (ACC) and areas under the curve (AUC) were evaluated for all methods, feature sets, and regions of interest to investigate the dependence of model performance on dataset type, area size, fold, and method used. All results are provided in supplementary file~\textit{B}. 
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{doc/05_07_auc_acc_method_fset.png}
+\caption{AUC (top) and ACC (bottom) distributions across all evaluated classifiers and feature sets. Results are grouped by feature set type: distribution-based, global-based, and voxel-based. Within each group, individual violin plots correspond to one classifier. The left half of each violin plot represents models trained on whole-thrombus features; the right half represents models trained on thrombus core features. RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}\label{fig.AUC_ACC_distributions_all}
+\end{figure}
+
+As visible in Fig.~\ref{fig.AUC_ACC_distributions_all}, the meaningful performance of the models decreased when only the core voxels of the thrombus were selected compared to the results achieved using the information from the whole clot. Accordingly, even though the precision of the voxel based models was high, the voxel based dataset appeared to contain insufficient information to distinguish between SRP/nSRP and led to model underfitting with the prediction of the same label regardless of the method used. These results confirm the expected findings, that the information provided by a single voxel is insufficient to establish the clinical outcome. Nevertheless, this dataset was crucial for the creation of the global and distribution based datasets.
+
+The investigation, whether the models performance is higher than  Based on the Fig.~\ref{fig.D3_cohens_kappa_heatmap_all_fsets} of the Cohen's~$\kappa$ comparing the performance of the model to its randomized variant. The performance of the random model variant was obtained by randomly shuffling labels 100 times to the testing dataset. The mean accuracy achieved on the dataset with not true labels is considered as the accuracy of the random model with the same architecture and parameters as the predictive one. 
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{doc/D4_diff_and_kappa_heatmap_all_fsets.png}
+\caption{Cohen§s Kappa  RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}\label{fig.D3_cohens_kappa_heatmap_all_fsets}
+\end{figure}
+
+
+
+
+Due to the findings stated, further analysis will focus on the distribution and global based whole thrombus datasets. Results achieved using information only from the thrombus centerline and voxel-based dataset may be viewed in the supplementary material.
+
+The median AUC of the models using the global-based feature set was above 63\%, and the median ACC was higher than~57\%. These results substantially exceed the performance reported by~\cite{vanVoorst2022}, who achieved an AUC of~52\% for SRP prediction using only mean global thrombus radiomic features.
+
+In the case of the models using the distribution-based information, the median AUC of the LASSO-RF model achieved only~37\% and median ACC was~50\%. As visible in Fig.~\ref{fig.spline_combined_dist_global}, models using this method utilized only one feature for classifier training, when using the distribution-based dataset. Based on the results, the model was not able to fit appropriately during the entire optimization process, which resulted in a set of zero weighted coefficients for all provided features. Since all features were determined to be equally unimportant due to their low relationship with the SRP/nSRP, only the probability density in the first bin of the histogram created from the NCCT thrombus scan was selected for training. However, even though the median metric values of the rest of the classifiers reach almost the same fruitfulness as a random classifier, some models reach AUC and ACC above 70\%, which suggests that the distribution based features introduce clinically relevant information.
+
+%%% CONFLICT: figure caption — MAIN.TEX drops the "logarithmic axis, 1 to
+%%% >10^3 out of 16528 features" sentence, otherwise identical.
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{doc/spline_combined_dist_global.png}
+%<<<<<<< MAIN.TEX (active)
+\caption{Dependence of the AUC (top) and ACC (bottom) on the number of selected features for models trained on whole-thrombus feature sets. Each point represents results achieved for a single split. The number of selected features is shown on a logarithmic axis and ranges from 1 to more than $10^{3}$ out of 16528 features. Lines indicate linear regression trends fitted in log-space. RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}\label{fig.spline_combined_dist_global}
+
+\end{figure}
+
+According to Fig.~\ref{fig.spline_combined_dist_global}, it is visible that models trained on the global-based dataset reached comparable or higher performance when selecting fewer than 100 out of 16528 features than those selecting more than 1000 features. Since models which used LASSO for feature selection achieve comparable AUC and ACC as the ones using RFI selector, the usage of these models is recommended as there is lower order of selected features, thus lower computational demand.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{doc/boosted_vs_raw_accuracy_heatmap.png}
+\caption{Accuracy of the boosted models and its difference from the individual models they combine. Columns represent the 15~evaluated ensemble configurations, ordered from configurations built on a single feature set (\emph{type3}, left of the divider) to configurations combining several feature sets (\emph{type1}, \emph{type2}, \emph{type4} and \emph{type5}). The top block shows the accuracy of the boosted model, both overall (\emph{mean accuracy}) and, for the configurations built on a single feature set, separately for each selector--classifier combination used as the weak learner. The shaded cells are not defined for the configurations combining several feature sets. The bottom strip shows the difference between the boosted model and the best individual model of the same configuration. RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}
+
+\label{fig.boosted_vs_raw_accuracy_heatmap}
+\end{figure}
+
+
+Registry - different population, older scanners
+
+\section{Acknowledgements}
+
+% \include{tables_tom/output/supplement}
+
+\section{CRediT}
+% https://www.elsevier.com/researcher/author/policies-and-guidelines/credit-author-statement
+
+Petra~Nemcekova: Conceptualization, Data curation, Formal analysis, Funding acquisition, Investigation, Methodology, Project administration, Software, Validation, Visualization, Writing – original draft, Writing – review \& editing. Jiri~Chmelik: Conceptualization, Project administration, Supervision, Visualization, Writing – original draft, Writing – review \& editing. Tomas~Vicar: Conceptualization, Supervision, Writing – original draft, Writing – review \& editing. Mahsa~Mojtahedi: Data curation, Writing – review \& editing. Agnetha~E~Bruggeman, Henk~van~Voorst, Elena~Ponomareva, Manon~Kappelhof, Aad~van~der~Lugt, Jan~W~Hoving, Bruna~G~Dutra, Diederik~Dippel, Fabiano~Cavalcante, Lonneke~Yo, Jonathan~Coutinho, Josje~Brouwer, Kilian~Treurniet, Manon~L~Tolhuisen, Natalie~LeCouffe, Nerea~Arrarte~Terreros, Praneeta~R~Konduri, Wim~van~Zwam, Yvo~Roos, Charles~B~L~M~Majoie, Bart~J~Emmer: Data curation. Henk~A.~Marquering: Resources, Supervision, Writing – review \& editing. Roman~Jakubicek: Conceptualization, Project administration, Supervision, Writing – original draft, Writing – review \& editing
+
+\section{Appendices}
+We ask you to use the following format for appendices:
+
+Identify individual appendices within your article using the format: A, B, etc.
+
+Give separate numbering to formulae and equations within appendices using formats such as Eq. (A.1), Eq. (A.2), etc. and in subsequent appendices, Eq. (B.1), Eq. (B. 2) etc. In a similar way, give separate numbering to tables and figures using formats such as Table A.1; Fig. A.1, etc.
+
+
+\bibliographystyle{elsarticle-num}
+\bibliography{BibFile}
+
+\end{document}
+
+\endinput

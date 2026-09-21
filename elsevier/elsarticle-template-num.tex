@@ -64,7 +64,7 @@
 
 
 
-\journal{Computerized Medical Imaging and Graphics}
+\journal{Computer Methods and Programs in Biomedicine}
 
 \begin{document}
 
@@ -197,7 +197,7 @@ Acute ischemic stroke (AIS) is caused by loss of blood circulation in specific a
 
 Nowadays, possible treatment options for AIS include mechanical thromb\-ec\-to\-my and intravenous thrombolysis \cite{Powers2020}. \NOTECHECK[However, there is currently no protocol to determine which treatment will be most beneficial for the patient, and the final decision is dependent on radiologists' experience.]{protokol je, není nástorj na odhadnutí..to vyzníva blbě} Since each patient who has suspicion of AIS undergoes CT imaging, recent studies have been exploring the potential of leveraging CT outputs to improve treatment prediction. For this, extraction of appropriate image features from CT scans may be crucial to reveal the connection between the image and clinical outcome. 
 
-Radiomics \NOTECHECK[\cite{Qiu2018}]{Gillies2016 nebo Aerts2014?} a method enabling the extraction of a vast amount of information from image data, has garnered attention. This approach involves the extraction of numerous image features, including first-order statistics, gray level run length matrices, neighboring gray tone difference matrices, and shape-based characteristics of the region of interest, which are imperceptible to the human eye. \NOTECHECK[Notably, Hofmeister et al. \cite{Hofmeister2020} demonstrated the efficacy of clot-based radiomic features in predicting the mechanical thrombectomy strategy for successful recanalization of patients with AIS.]{na 47 pacientech - to bych rekl ať to nezni vyresene}
+Radiomics \NOTECHECK[\cite{Qiu2018}]{Gillies2016 nebo Aerts2014?} a method enabling the extraction of a vast amount of information from image data, has garnered attention. This approach involves the extraction of numerous image features, including first-order statistics, gray level run length matrices, neighboring gray tone difference matrices, and shape-based characteristics of the region of interest, which are imperceptible to the human eye. Notably, Hofmeister et al. \cite{Hofmeister2020} demonstrated on 47 patients the efficacy of clot-based radiomic features in predicting the mechanical thrombectomy strategy for successful recanalization of patients with AIS.
 
 
 Qiu et al. \cite{Qiu2018} established a relationship between radiomic-based features and the efficacy of the recanalization with intravenous alteplase using NCCT and CTA images, along with the thrombus mask. Conversely, van Voorst et al. \cite{vanVoorst2022} identified the association of thrombus volume and texture with the number of retrieval attempts needed for successful reperfusion. However, they did not observe any additional value of thrombus radiomics compared to clinical baseline variables. Furthermore, Xie et al. \cite{Xie2022} revealed the association of wavelet-based radiomic features extracted from infarcted lesions on NCCT with hemorrhagic transformation after therapy in AIS. 
@@ -287,7 +287,7 @@ All trained models are freely available on XXX and the framework is available on
 
 
 
-This section establishes how much the choice of selector, classifier, feature set and region of interest alone can move discriminative performance within a single development cohort, before any of these results is compared with a null model or with the reference pipeline in Fig.~\ref{fig.AUC_ACC_distributions_all}) with detailed resutls in \NOTETODO[Table SXXX]{udělat tabulku se statistikama do suplementu.}.
+This section establishes how much the choice of selector, classifier, feature set and region of interest alone can move discriminative performance within a single development cohort, before any of these results is compared with a null model or with the reference pipeline. Fig.~\ref{fig.AUC_ACC_distributions_all} shows the resulting distributions and \NOTETODO[Table SXXX]{udelat tabulku se statistikama do suplementu} lists the per-combination values.
 
 
 Median cross-validated AUC across the 24 combinations ranged from 0.367 to 0.673, the four whole-thrombus global combinations being the highest as a group (0.632--0.673) and no centerline combination of either patient-level set exceeding 0.559.
@@ -312,7 +312,17 @@ Restricting the region of interest to the dilated centerline removed the discrim
 % \subsection{Statistical significance against the permutation baseline}
 \subsection{Comparison against the permutation null}
 
-This section asks whether the performance reported above exceeds what the same pipeline achieves on randomised outcome labels, because a flat chance level of 0.5 is only an assumption about where a random model would land and need not hold for every metric or every unit of analysis.
+\label{sec:results:permutation}
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=1\textwidth]{doc/D4_diff_and_kappa_heatmap_all_fsets.png}
+\caption{Performance of each model compared to its randomized variant. For every selector--classifier--feature-set combination, the labels of the test set were randomly shuffled 100~times, and the mean over these permutations is considered the performance of the random model. The top row shows the difference between the model and its randomized variant for AUC (left) and ACC (right). The bottom row shows the same comparison expressed as Cohen's~$\kappa$. Green cells represent combinations performing above their randomized variant, red cells below it. RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}
+\label{fig.D3_cohens_kappa_heatmap_all_fsets}
+\end{figure}
+
+
+
+This section asks whether the performance reported above exceeds what the same pipeline achieves on randomised outcome labels, because a flat chance level of 0.5 is only an assumption about where a random model would land and need not hold for every metric or every unit of analysis. Fig.~\ref{fig.D3_cohens_kappa_heatmap_all_fsets} shows each combination against its own null.
 
 \NOTETODO[pospat princip statistiky tady počítané]{dodělat statistiku a podle toho upravit}
 % The null was built separately for every combination by permuting the patient-level outcome labels 100 times within each outer test fold, holding the selected features and the fitted classifier fixed, and the test statistic was the mean AUC over the five folds; with 100 permutations the smallest attainable $p$-value is 0.0099, and because the model is not refitted the null does not absorb the optimism of feature selection and tuning.
@@ -325,13 +335,6 @@ This section asks whether the performance reported above exceeds what the same p
 
 
 
-\label{sec:results:permutation}
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=1\textwidth]{doc/D4_diff_and_kappa_heatmap_all_fsets.png}
-\caption{Performance of each model compared to its randomized variant. For every selector--classifier--feature-set combination, the labels of the test set were randomly shuffled 100~times, and the mean over these permutations is considered the performance of the random model. The top row shows the difference between the model and its randomized variant for AUC (left) and ACC (right). The bottom row shows the same comparison expressed as Cohen's~$\kappa$. Green cells represent combinations performing above their randomized variant, red cells below it. RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}
-\label{fig.D3_cohens_kappa_heatmap_all_fsets}
-\end{figure}
 
 
 
@@ -347,10 +350,11 @@ This section asks whether the performance reported above exceeds what the same p
 \centering
 \includegraphics[width=1\textwidth]{doc/auc_acc_selected_vs_henk_pipeline_boxplot}
 \caption{AUC (top) and ACC (bottom) of the selected proposed combinations and of the reference pipeline of van~Voorst et al. \cite{vanVoorst2022}. Blue boxes represent the selected whole-thrombus distribution-based and global-based combinations. The yellow box represents a full replication of the reference pipeline, including its own feature selection. The green and pink boxes represent our RF and SVC classifiers trained on the fixed set of 52~ICC-filtered features reported in the reference work. Boxes show the median and the interquartile range over the five folds, and dots represent the individual folds. The dotted red line marks the chance level of~0.5. RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}
-\
+\label{fig.auc_acc_selected_vs_henk_pipeline}
 \end{figure}
 
-This section asks whether the modest discrimination reported so far is a property of thrombus radiomics in this cohort or of the analysis choices made here, by recomputing a published pipeline for the same task on the same patients and the same folds and placing it next to the proposed combinations.
+This section asks whether the modest discrimination reported so far is a property of thrombus radiomics in this cohort or of the analysis choices made here, by recomputing a published pipeline for the same task on the same patients and the same folds and placing it next to the proposed combinations. Fig.~\ref{fig.auc_acc_selected_vs_henk_pipeline} places the two side by side and \NOTETODO[Table SXXX]{srovnani s referencni pipeline} lists the fold-wise differences.
+
 
 
 
@@ -372,7 +376,7 @@ This section asks whether the modest discrimination reported so far is a propert
 
 
 
-This section asks whether any of the pipelines retains its discriminative performance once it is moved to a cohort it was not developed on, which is the question that cross-validation within a single curated dataset cannot answer.
+This section asks whether any of the pipelines retains its discriminative performance once it is moved to a cohort it was not developed on, which is the question that cross-validation within a single curated dataset cannot answer. \NOTETODO[Table SXXX]{externi validace CV median vs. Registry vcetne delta AUC -- table4_external_validation, nahradit prazdnou tab:placeholder} lists the cross-validated and the external values side by side.
 
 
 
@@ -424,13 +428,13 @@ According to Fig.~\ref{fig.spline_combined_dist_global}, it is visible that mode
 
  
 
-
 % major vote / most frequent prediction / confidence interval
 
 
 Registry - different population, older scanners
 
-\textbf{Limitations}
+
+\section{Acknowledgements}
 
 
 % \include{tables_tom/output/supplement}
