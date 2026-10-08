@@ -37,7 +37,7 @@
 
 \begin{document}
 
-\title[Radiomic feature selection for reperfusion prediction]{Feature selection and relevance of radiomic features for reperfusion prediction}
+\title[Selection and Relevance of Radiomic Features for Reperfusion Prediction]{Selection and Relevance of Radiomic Features for Reperfusion Prediction}
 
 %%=============================================================%%
 %% GivenName	-> \fnm{Joergen W.}
@@ -50,43 +50,31 @@
 \author[1]{\fnm{Jiri} \sur{Chmelik}}
 \author[1]{\fnm{Tomas} \sur{Vicar}}
 \author[2]{\fnm{Mahsa} \sur{Mojtahedi}}
-\author[3]{\fnm{Agnetha E} \sur{Bruggeman}}
-\author[2]{\fnm{Henk} \spfx{van} \sur{Voorst}}
-\author[4]{\fnm{Elena} \sur{Ponomareva}}
 \author[3]{\fnm{Manon} \sur{Kappelhof}}
-\author[5]{\fnm{Aad} \spfx{van der} \sur{Lugt}}
 \author[3]{\fnm{Jan W} \sur{Hoving}}
-\author[3]{\fnm{Bruna G} \sur{Dutra}}
-\author[6]{\fnm{Diederik} \sur{Dippel}}
 \author[3]{\fnm{Fabiano} \sur{Cavalcante}}
-\author[7]{\fnm{Lonneke} \sur{Yo}}
-\author[8]{\fnm{Jonathan} \sur{Coutinho}}
-\author[8]{\fnm{Josje} \sur{Brouwer}}
 \author[9,10]{\fnm{Kilian} \sur{Treurniet}}
-\author[2]{\fnm{Manon L} \sur{Tolhuisen}}
-\author[8]{\fnm{Natalie} \sur{LeCouffe}}
 \author[2,3]{\fnm{Nerea} \sur{Arrarte Terreros}}
 \author[2,3]{\fnm{Praneeta R} \sur{Konduri}}
+\author[5]{\fnm{Aad} \spfx{van der} \sur{Lugt}}
+\author[6]{\fnm{Diederik} \sur{Dippel}}
+\author[8]{\fnm{Jonathan} \sur{Coutinho}}
 \author[11]{\fnm{Wim} \spfx{van} \sur{Zwam}}
 \author[8]{\fnm{Yvo} \sur{Roos}}
-\author[3]{\fnm{Charles B L M} \sur{Majoie}}
 \author[3]{\fnm{Bart J} \sur{Emmer}}
+\author[3]{\fnm{Charles B L M} \sur{Majoie}}
 \author*[1]{\fnm{Roman} \sur{Jakubicek}}\email{jakubicek@vut.cz}
-\author[2]{\fnm{Henk A.} \sur{Marquering}}
+\author[2,3]{\fnm{Henk A.} \sur{Marquering}}
 
-\affil*[1]{\orgdiv{Department of Biomedical Engineering and Bioinformatics}, \orgname{Brno University of Technology}, \orgaddress{\street{Technick\'a 3082/12}, \city{Brno}, \postcode{61200}, \country{Czech Republic}}}
+\affil[1]{\orgdiv{Department of Biomedical Engineering and Bioinformatics}, \orgname{Brno University of Technology}, \orgaddress{\street{Technick\'a 3082/12}, \city{Brno}, \postcode{61200}, \country{Czech Republic}}}
 
-\affil[2]{\orgdiv{Department of Biomedical Engineering and Physics}, \orgname{Amsterdam University Medical Centers}, \orgaddress{\street{Meibergdreef 9}, \city{Amsterdam}, \postcode{1105 AZ}, \country{Netherlands}}}
+\affil[2]{\orgdiv{Department of Biomedical Engineering and Physics}, \orgname{Amsterdam University Medical Center}, \orgaddress{\street{Meibergdreef 9}, \city{Amsterdam}, \postcode{1105 AZ}, \country{Netherlands}}}
 
-\affil[3]{\orgdiv{Department of Radiology and Nuclear Medicine}, \orgname{Amsterdam University Medical Centers}, \orgaddress{\street{Meibergdreef 9}, \city{Amsterdam}, \postcode{1105 AZ}, \country{Netherlands}}}
-
-\affil[4]{\orgname{Nicolab}, \orgaddress{\street{Paasheuvelweg 25}, \city{Amsterdam}, \postcode{1105 BP}, \country{Netherlands}}}
+\affil[3]{\orgdiv{Department of Radiology and Nuclear Medicine}, \orgname{Amsterdam University Medical Center}, \orgaddress{\street{Meibergdreef 9}, \city{Amsterdam}, \postcode{1105 AZ}, \country{Netherlands}}}
 
 \affil[5]{\orgdiv{Department of Radiology and Nuclear Medicine}, \orgname{Erasmus MC}, \orgaddress{\street{Dr.\ Molewaterplein 40}, \city{Rotterdam}, \postcode{3015 GD}, \country{Netherlands}}}
 
 \affil[6]{\orgdiv{Department of Neurology}, \orgname{Erasmus MC UMC}, \orgaddress{\street{Dr.\ Molewaterplein 40}, \city{Rotterdam}, \postcode{3015 GD}, \country{Netherlands}}}
-
-\affil[7]{\orgdiv{Department of Radiology}, \orgname{Catharina Ziekenhuis}, \orgaddress{\street{Michelangelolaan 2}, \city{Eindhoven}, \postcode{5623 EJ}, \country{Netherlands}}}
 
 \affil[8]{\orgdiv{Department of Neurology}, \orgname{Amsterdam UMC}, \orgaddress{\street{Meibergdreef 9}, \city{Amsterdam}, \postcode{1105 AZ}, \country{Netherlands}}}
 
@@ -126,28 +114,28 @@
 
 % - Klinický kontext: EVT pri veľkocievnom uzávere, eTICI škála ako outcome, prečo je predikcia úspešnosti reperfúzie klinicky užitočná (voľba stratégie/zariadenia, informovanie pacienta/tímu, procedurálne plánovanie)
 
-Acute ischemic stroke (AIS) is caused by loss of blood circulation in a specific area of the brain due to an occlusion of an intracranial artery and is one of the leading causes of mortality in the world \cite{Phipps2020}. The prognosis of the patient depends on, amongst others, the findings of neuroimaging, which consists of non-contrast computed tomography (NCCT) and computed tomography angiography (CTA).
+Acute ischemic stroke (AIS) is caused by loss of blood circulation in a specific area of the brain due to an occlusion of an intracranial artery. AIS is one of the leading causes of mortality in the world \cite{Phipps2020}. The prognosis of the patient depends, among other factors, on findings from neuroimaging, which consists of non-contrast computed tomography (NCCT) computed tomography angiography (CTA), and sometimes CT Perfusion.
 
-Nowadays, possible treatment options for AIS include endovascular treatment (EVT), indicated in patients with large vessel occlusion (LVO), and intravenous thrombolysis \cite{Powers2020}.\NOTECHECK[However, there is currently no protocol to determine which treatment will be most beneficial for the patient, and the final decision is dependent on radiologists' experience.]{protokol je, není nástorj na odhadnutí..to vyzníva blbě} Since each patient with suspected AIS undergoes CT imaging, recent studies have been exploring the potential of leveraging CT-derived imaging features to improve treatment prediction. For this, extraction of appropriate image features from CT scans may be crucial to reveal the connection between the image and clinical outcome. The information about the amount of the reperfusion is quantified by the Extended Thrombolysis In Cerebral Infarction (eTICI) score, it has therefore been suggested as a suitable parameter for differentiating between the successful reperfusion (SRP) and non-successful reperfusion (nSRP). An estimate of the likelihood of reperfusion based on pre-treatment data could aid procedural planning and help maximize the benefit of EVT for the patient.
+Treatment options for AIS include endovascular treatment (EVT), indicated in patients with large vessel occlusion (LVO), and intravenous thrombolysis, which can be administered if patients arrive at the hospital in time \cite{Powers2020}.\NOTECHECK[However, there is currently no protocol to determine which treatment will be most beneficial for the patient, and the final decision is dependent on radiologists' experience.]{protokol je, není nástorj na odhadnutí..to vyzníva blbě} Since each patient with suspected AIS undergoes CT imaging, recent studies have explored the potential of leveraging CT-derived imaging features for treatment outcome prediction. 
+To this end, extraction of appropriate image features from CT scans is crucial to study the association between image features and clinical outcome. The extent of reperfusion can be assessed by the Extended Thrombolysis In Cerebral Infarction (eTICI) score. eTICI has therefore been suggested as a suitable parameter for differentiating between successful reperfusion and non-successful reperfusion. An estimate of the likelihood of reperfusion based on pre-treatment data could aid procedural planning and help maximize the benefit of EVT for the patient.
 
 % - State of the art zameraný na: (a) radiomika trombu vo všeobecnosti,
 
-Radiomics \NOTECHECK[\cite{Qiu2018}]{Gillies2016 nebo Aerts2014?}, a method enabling the extraction of a vast amount of information from image data, has garnered attention. This approach involves the extraction of numerous image features, including first-order statistics, gray level run length matrices, neighboring gray tone difference matrices, and shape-based characteristics of the region of interest, which are imperceptible to the human eye.
-Hofmeister et al. \cite{Hofmeister2020} demonstrated on 47 patients the efficacy of clot-based radiomic features in predicting the mechanical thrombectomy strategy for successful recanalization of patients with AIS.
-Qiu et al. \cite{Qiu2018} established a relationship between radiomic-based features and the efficacy of the recanalization with intravenous alteplase using NCCT and CTA images, along with the thrombus mask. These findings underscore the potential of radiomics as a valuable tool for extracting meaningful information from medical images, contributing to improved decision-making in the treatment of stroke patients.
+Radiomics \NOTECHECK[\cite{Qiu2018}]{Gillies2016 nebo Aerts2014?}, a method for the extraction of a vast amount image characteristics, has garnered attention. This approach involves the extraction of numerous image features, including first-order statistics, gray level run length matrices, neighboring gray tone difference matrices, and shape-based characteristics of the region of interest, which are imperceptible to the human eye.
+Hofmeister et al. \cite{Hofmeister2020} demonstrated the efficacy of clot-based radiomic features in predicting the mechanical thrombectomy strategy for successful recanalization of patients with AIS.
+Qiu et al. \cite{Qiu2018} showed the association radiomic-based features on NCCT and CTA images and the efficacy of the recanalization with intravenous alteplase. These findings underscore the potential of radiomics as a valuable tool for extracting meaningful information from medical images, contributing to improved decision-making in the treatment of stroke patients.
 
 % (b) konkrétne van Voorst et al. 2023 — čo urobili, aké AUC dosiahli pre eTICI≥2B (~0.52–0.56, teda blízko náhode), aký feature-selection použili (ICC≥0.75 filter, RF, žiadny ďalší výber príznakov)
 
-In this context, van Voorst et al. \cite{vanVoorst2022} identified the association of thrombus volume and texture with the number of retrieval attempts needed for successful reperfusion, selecting features with an intraclass correlation coefficient (ICC)$\geq$0.75 and using the random forest classifier (RF). However, they did not observe any additional value of thrombus radiomics for the prediction of the reperfusion (eTICI$\geq$2B, AUC 0.52) compared to clinical baseline variables (eTICI$\geq$2B AUC 0.56).
+van Voorst et al. \cite{vanVoorst2022} identified the association of thrombus volume and texture with the number of retrieval attempts needed for successful reperfusion. However, they did not observe any additional value of thrombus radiomics for the prediction of reperfusion compared to clinical baseline variables.
 
 % - Gap/limitácia predchádzajúcej práce: jedna pevná kombinácia feature-selection + klasifikátor; žiadne porovnanie granularity príznakov (voxel/distribution/global, whole vs. skeleton); žiadny permutačný test proti empirickému chance-baseline; žiadne overenie, či iná metóda výberu príznakov (Lasso/RFI) alebo klasifikátor (SVC) zmenia záver
 
-Even though there are many studies which focused on the prediction of the clinical outcome using extracted radiomic features, to the best of our knowledge, \NOTECHECK[none of them exploited the potential of information hidden in the available data and used only the mean values of the extracted features from the thrombus.]{nemyslím si že je pravda} Moreover, none of the studies used supervised feature selection algorithms and based the feature selection purely on the removal of features which include similar information based on strictly defined threshold without further investigation.
+Even though there are many studies that assess the association of radiomic features with clinical outcome, to the best of our knowledge, \NOTECHECK[none of them exploited the potential of information hidden in the available data and used only the mean values of the extracted features from the thrombus.]{nemyslím si že je pravda} Moreover, previous studies use radiomic feature selection based on similarity of features, Here we present an approach where radiomics features are selected using supervised approaches.
 
 % - Research question / hypotézy — formulovať explicitne, napr.:
 %   - Ovplyvňuje voľba metódy výberu príznakov a granularity feature-setu diskriminačný výkon pri predikcii eTICI≥2B?
-Our study focuses on several tightly dependent hypotheses. First of all,
-Our study focuses on the exploration of features at different spatial scales, from global thrombus-level descriptors to single voxels. Moreover, we investigate the influence of the segmentation size on the prediction success.
+Our study focuses on the exploration of features at different spatial scales, from global thrombus-level  to single voxel descriptors. Moreover, we investigate the influence of the segmentation size on the prediction success.
 
 %   - Zlepší kombinovanie (ensemble/boosting) viacerých slabých modelov výkon nad rámec ktorejkoľvek jednotlivej pipeline?
 
@@ -172,12 +160,13 @@ Our study focuses on the exploration of features at different spatial scales, fr
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=1\textwidth]{doc/05_07_auc_acc_method_fset_corrected.png}
+\includegraphics[width=1\textwidth]{img/05_07_auc_acc_method_fset_with_henk.png}
 \caption{AUC (top) and ACC (bottom) distributions across the 24 evaluated selector--classifier--feature-set combinations. Results are grouped by feature set type: distribution-based, global-based, and voxel-based. Within each group, individual violin plots correspond to one selector--classifier combination. The left (blue) half of each violin plot represents models trained on whole-thrombus features; the right (orange) half represents models trained on features from the thrombus centerline dilated by 3~voxels. Dots represent the five individual folds and the horizontal bar represents the median. The dotted red line marks the chance level of~0.5. RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}
 \label{fig.AUC_ACC_distributions_all}
 \end{figure}
 
-This section establishes how much the choice of selector, classifier, feature set and region of interest alone can move discriminative performance within a single development cohort, before any of these results is compared with a null model or with the reference pipeline. Fig.~\ref{fig.AUC_ACC_distributions_all} shows the resulting distributions and \NOTETODO[S\ref{tab:S1-auc-acc-distributions}]{skontrolovat tabulku se statistikama do suplementu} lists the per-combination values.
+This section show to what extent the choice of selector, classifier, feature set and region of interest alone can alter discriminative performance within a single development cohort.
+Later, these results are compared with a null model and with a reference pipeline. Fig.~\ref{fig.AUC_ACC_distributions_all} shows the resulting distributions and \NOTETODO[S\ref{tab:S1-auc-acc-distributions}]{skontrolovat tabulku se statistikama do suplementu} lists the per-combination values.
 
 Median cross-validated AUC across the 24 combinations ranged from 0.367 to 0.673, the four whole-thrombus global combinations being the highest as a group (0.632--0.673) and no centerline combination of either patient-level set exceeding 0.559.
 
@@ -192,9 +181,9 @@ Restricting the region of interest to the dilated centerline removed the discrim
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=1\textwidth]{doc/D4_diff_and_kappa_heatmap_all_fsets.png}
-\caption{Performance of each model compared to its randomized variant. For every selector--classifier--feature-set combination, the labels of the test set were randomly shuffled 100~times, and the mean over these permutations is considered the performance of the random model. The top row shows the difference between the model and its randomized variant for AUC (left) and ACC (right). The bottom row shows the same comparison expressed as Cohen's~$\kappa$. Green cells represent combinations performing above their randomized variant, red cells below it. RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}
-\label{fig.D3_cohens_kappa_heatmap_all_fsets}
+\includegraphics[width=1\textwidth]{img/D4_diff_and_kappa_heatmap_all_fsets.png}
+\caption{Performance of each model compared to its randomized variant. For every selector--classifier--feature-set combination, the labels of the test set were randomly shuffled 5000~times, and the mean over these permutations is considered the performance of the random model. The top row shows the difference between the model and its randomized variant for AUC (left) and ACC (right). The bottom row shows the same comparison expressed as Cohen's~$\kappa$. Green cells represent combinations performing above their randomized variant, red cells below it. RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}
+\label{fig.D4_cohens_kappa_heatmap_all_fsets}
 \end{figure}
 
 This section asks whether the performance reported above exceeds what the same pipeline achieves on randomised outcome labels, because a flat chance level of 0.5 is only an assumption about where a random model would land and need not hold for every metric or every unit of analysis. Fig.~\ref{fig.D3_cohens_kappa_heatmap_all_fsets} shows each combination against its own null.
@@ -209,7 +198,7 @@ This section asks whether the performance reported above exceeds what the same p
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=1\textwidth]{doc/auc_acc_selected_vs_henk_pipeline_boxplot}
+\includegraphics[width=1\textwidth]{img/auc_acc_selected_vs_henk_pipeline_boxplot}
 \caption{AUC (top) and ACC (bottom) of the selected proposed combinations and of the reference pipeline of van~Voorst et al. \cite{vanVoorst2022}. Blue boxes represent the selected whole-thrombus distribution-based and global-based combinations. The yellow box represents a full replication of the reference pipeline, including its own feature selection. The green and pink boxes represent our RF and SVC classifiers trained on the fixed set of 52~ICC-filtered features reported in the reference work. Boxes show the median and the interquartile range over the five folds, and dots represent the individual folds. The dotted red line marks the chance level of~0.5. RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}
 \label{fig.auc_acc_selected_vs_henk_pipeline}
 \end{figure}
@@ -240,21 +229,15 @@ This section asks whether any of the pipelines retains its discriminative perfor
 
 The prediction accuracies (ACC) and areas under the curve (AUC) were evaluated for all methods, feature sets, and regions of interest to investigate the dependence of model performance on dataset type, area size, fold, and method used. All results are provided in supplementary file~\textit{B}.
 
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=1\textwidth]{doc/05_07_auc_acc_method_fset.png}
-\caption{AUC (top) and ACC (bottom) distributions across all evaluated classifiers and feature sets. Results are grouped by feature set type: distribution-based, global-based, and voxel-based. Within each group, individual violin plots correspond to one classifier. The left half of each violin plot represents models trained on whole-thrombus features; the right half represents models trained on thrombus core features. RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}\label{fig.AUC_ACC_distributions_all2}
-\end{figure}
+% \begin{figure}[!htb]
+% \centering
+% \includegraphics[width=1\textwidth]{doc/05_07_auc_acc_method_fset_corrected.png}
+% \caption{AUC (top) and ACC (bottom) distributions across all evaluated classifiers and feature sets. Results are grouped by feature set type: distribution-based, global-based, and voxel-based. Within each group, individual violin plots correspond to one classifier. The left half of each violin plot represents models trained on whole-thrombus features; the right half represents models trained on thrombus core features. RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}\label{fig.AUC_ACC_distributions_all2}
+% \end{figure}
 
-As visible in Fig.~\ref{fig.AUC_ACC_distributions_all2}, the meaningful performance of the models decreased when only the core voxels of the thrombus were selected compared to the results achieved using the information from the whole clot. Accordingly, even though the precision of the voxel based models was high, the voxel based dataset appeared to contain insufficient information to distinguish between SRP/nSRP and led to model underfitting with the prediction of the same label regardless of the method used. These results confirm the expected findings, that the information provided by a single voxel is insufficient to establish the clinical outcome. Nevertheless, this dataset was crucial for the creation of the global and distribution based datasets.
+As visible in Fig.~\ref{fig.AUC_ACC_distributions_all}, the meaningful performance of the models decreased when only the core voxels of the thrombus were selected compared to the results achieved using the information from the whole clot. Accordingly, even though the precision of the voxel based models was high, the voxel based dataset appeared to contain insufficient information to distinguish between SRP/nSRP and led to model underfitting with the prediction of the same label regardless of the method used. These results confirm the expected findings, that the information provided by a single voxel is insufficient to establish the clinical outcome. Nevertheless, this dataset was crucial for the creation of the global and distribution based datasets.
 
-The investigation, whether the models performance is higher than  Based on the Fig.~\ref{fig.D3_cohens_kappa_heatmap_all_fsets2} of the Cohen's~$\kappa$ comparing the performance of the model to its randomized variant. The performance of the random model variant was obtained by randomly shuffling labels 100 times to the testing dataset. The mean accuracy achieved on the dataset with not true labels is considered as the accuracy of the random model with the same architecture and parameters as the predictive one.
-
-\begin{figure}[!htb]
-\centering
-\includegraphics[width=1\textwidth]{doc/D4_diff_and_kappa_heatmap_all_fsets.png}
-\caption{Cohen§s Kappa  RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}\label{fig.D3_cohens_kappa_heatmap_all_fsets2}
-\end{figure}
+The investigation, whether the models performance is higher than  Based on the Fig.~\ref{fig.D4_cohens_kappa_heatmap_all_fsets} of the Cohen's~$\kappa$ comparing the performance of the model to its randomized variant. The performance of the random model variant was obtained by randomly shuffling labels 100 times to the testing dataset. The mean accuracy achieved on the dataset with not true labels is considered as the accuracy of the random model with the same architecture and parameters as the predictive one.
 
 Due to the findings stated, further analysis will focus on the distribution and global based whole thrombus datasets. Results achieved using information only from the thrombus centerline and voxel-based dataset may be viewed in the supplementary material.
 
@@ -264,7 +247,7 @@ In the case of the models using the distribution-based information, the median A
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=1\textwidth]{doc/spline_combined_dist_global.png}
+\includegraphics[width=1\textwidth]{img/spline_combined_dist_global.png}
 \caption{Dependence of the AUC (top) and ACC (bottom) on the number of selected features for models trained on whole-thrombus feature sets. Each point represents results achieved for a single split. The number of selected features is shown on a logarithmic axis and ranges from 1 to more than $10^{3}$ out of 16528 features. Lines indicate linear regression trends fitted in log-space. RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}\label{fig.spline_combined_dist_global}
 \end{figure}
 
@@ -272,7 +255,7 @@ According to Fig.~\ref{fig.spline_combined_dist_global}, it is visible that mode
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=1\textwidth]{doc/boosted_vs_raw_accuracy_heatmap.png}
+\includegraphics[width=1\textwidth]{img/boosted_vs_raw_accuracy_heatmap.png}
 \caption{Accuracy of the boosted models and its difference from the individual models they combine. Columns represent the 15~evaluated ensemble configurations, ordered from configurations built on a single feature set (\emph{type3}, left of the divider) to configurations combining several feature sets (\emph{type1}, \emph{type2}, \emph{type4} and \emph{type5}). The top block shows the accuracy of the boosted model, both overall (\emph{mean accuracy}) and, for the configurations built on a single feature set, separately for each selector--classifier combination used as the weak learner. The shaded cells are not defined for the configurations combining several feature sets. The bottom strip shows the difference between the boosted model and the best individual model of the same configuration. RF: random forest classifier; SVC: support vector classifier; RFI: random forest importance-based selector; LASSO - least absolute shrinkage and selection operator selector.}
 \label{fig.boosted_vs_raw_accuracy_heatmap}
 \end{figure}
@@ -285,30 +268,30 @@ Registry - different population, older scanners
 
 % 2.1 Study cohorts and outcome definition
 % - Popis kohort (interná CV kohorta „NOIV" vs. externá „REGISTRY"), veľkosti, in/exclusion
-For the purpose of this study, multicenter data from the MR CLEAN NO-IV trial dataset~\cite{Jansen2018}, including 539 patients with both NCCT and CTA scans and large vessel occlusion (LVO), were used to train, validate and test the models. Moreover, to increase the reliability of the study, the MR CLEAN Registry database~\cite{IvoGHJansen20180309} was used for feature reproducibility and model robustness testing.
+For the purpose of this study, multicenter data from the MR CLEAN NO-IV trial dataset~\cite{Jansen2018}, including 539 patients with both NCCT and CTA scans and large vessel occlusion (LVO), were used to train, validate and test the prediction models. To increase the reliability of the study, the MR CLEAN Registry database~\cite{IvoGHJansen20180309} was used for feature reproducibility and model robustness testing.
 
 % - eTICI≥2B ako binárny outcome, kto/ako labeloval
 
-The patient exclusion criteria for both datasets are described in \cite{Mojtahedi2024}. As reported in \cite{Nemcekova2025}, an additional exclusion step was required due to the feature extraction process, which reduced the NO-IV dataset to 296 patients and the Registry database from 2597 to 1906 patients (16 missing TICI value, 575 missing segmentation, 100 spacing above 1 mm). Since the NO-IV dataset was used for model training, it was manually verified, and cases with inappropriate segmentation locations or multiple separated thrombus parts were excluded to ensure values from the valid image parts were used, reducing the training dataset to 141 patients.
+The patient inclusion and exclusion criteria for both datasets are described in \cite{Mojtahedi2024}. As reported in \cite{Nemcekova2025}, an additional exclusion step was required because of the feature extraction process, which reduced the NO-IV data set to 296 patients and the Registry database from 2597 to 1906 patients (16 missing TICI value, 575 missing thrombus segmentation, 100 spacing exceeding 1 mm). Thrombus segmentations were obtained using automated segmentation tool \cite{Mojtahedi2022312}. Since the NO-IV data set was used for model training, segmentations for this dataset were manually verified, and cases with inappropriate segmentation locations or multiple separated thrombus parts were excluded to ensure values from the valid image parts were used, reducing the training dataset to 141 patients.
 
 The ratio of patients with successful reperfusion (SRP) to those with non-successful reperfusion (nSRP) was not adjusted, the final training dataset therefore consists of 82 patients with SRP and 59 patients with nSRP, preserving the same SRP to nSRP ratio as in the full dataset.
 
-\subsection{Data preparation ...}
+\subsection{Data preparation}
 
-Since the database includes images from different scanners and therefore various resolutions, resampling the data to the same isotropic voxel size of~0.5~mm was crucial to ensure that the same amount of information is provided by each voxel. To prevent the impact of the marginal effects of the mask features and thus extract relevant feature values for whole thrombus, dilated segmentation mask was used for the feature extraction. A total of 1204 voxel-based features were extracted from both NCCT and CTA images using the PyRadiomics toolbox~\cite{VanGriethuysen20171031} with custom parameter settings described in the supplementary file \NOTETODO[PyradiomicsConfig.yaml]{PyradiomicsConfig.yaml -- not yet created}. Features with empty values were excluded before feature selection. This occurred due to the small size of the thrombus, which made the use of large filter masks useless.
+Since the database includes images from different scanners and therefore various resolutions, resampling the data to the same isotropic voxel size of~0.5~mm was crucial to ensure that the same amount of information is provided by each voxel. To prevent the impact of the marginal effects of the mask features and thus extract relevant feature values for whole thrombus, dilated segmentation mask was used for the feature extraction. A total of 1204 voxel-based features were extracted from both NCCT and CTA images using the PyRadiomics toolbox~\cite{VanGriethuysen20171031} with custom parameter settings described in the supplementary file \NOTETODO[PyradiomicsConfig.yaml]{PyradiomicsConfig.yaml -- not yet created}. Features with empty values were excluded before feature selection. This occurred due to the small size of the thrombus, which made the use of large filter masks not generalizable.
 
 According to our preliminary study~\cite{Nemcekova2024}, determining the borders of the thrombus is challenging, and even experienced radiologists do not fully agree on the size of the segmented thrombi. Uncertain thrombus segmentation boundaries may introduce unwanted information from the clot neighborhood, mixing information from two different tissues and potentially introducing noise into extracted features. To investigate the influence of segmentation size, and specifically the impact of edge voxels on the prediction, only voxels located on the thrombus centerline, dilated by 3 voxels, were selected, defining the \textbf{core thrombus area}.
 
-To explore the feature potential of information contribution, extraction of three feature sets at different levels of neighborhood influence was applied: voxel-based, distribution-based and global-based. \textbf{The voxel-based set} included 2066 feature values for each thrombus voxel. The \textbf{distribution-based set} was derived from the probability density across 10 bins of thrombus feature histogram, which resulted in 20660 extracted features per patient. The \textbf{global-based set}, was based on global statistics computed from the feature values of the entire thrombus, including the voxel count, mean, standard deviation, minimum, maximum and the 25\%, 50\% and 75\% percentiles. Therefore, global based dataset included 16528 feature values per patient. As a result, six datasets (three feature set types and two region sizes) were used for the analysis.
+To explore the feature potential of information contribution, extraction of three feature sets at different levels of neighborhood influence was applied: voxel-based, distribution-based and global-based. \textbf{The voxel-based set} included 2064 radiomic feature values and NCCT and CTA values for each thrombus voxel. The \textbf{distribution-based set} was derived from the probability density across 10 bins of thrombus voxel-based feature histogram, which resulted in 20660 extracted features per patient. The \textbf{global-based set}, was based on global statistics computed from the feature values of the entire thrombus, including the voxel count, mean, standard deviation, minimum, maximum and the 25\%, 50\% and 75\% percentiles. Therefore, global based dataset included 16528 feature values per patient. As a result, six datasets (three feature set types and two region sizes) were used for the analysis.
 
-To ensure that the division of the dataset into training and test sets did not affect the reproducibility of the predictions, the NOIV dataset was split into five non-overlapping training and testing folds. The definition of the splits in the context of the whole analysis pipeline is shown in the supplementary file \NOTETODO[XX]{doc/Thrombi_paper_FS_RF_SRP2.png}.
+To ensure that the division of the dataset into training and test sets did not affect the reproducibility of the predictions, the NOIV dataset was split into five non-overlapping training and testing folds. For the creation of the distribution-based feature set, histogram bin boundaries were defined from the training set. The definition of the splits in the context of the whole analysis pipeline is shown in the supplementary file \NOTETODO[XX]{Supplement/Thrombi_paper_FS_RF_SRP3.png}.
 
 Each feature set underwent preprocessing, including z-score normalization based on the training set. The whole preprocessing pipeline is shown in Fig.\ref{fig.Thrombi_paper_FS_RF_SRP1}. 
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=1\textwidth]{doc/Thrombi_paper_FS_RF_SRP1.png}
-\caption{Data processing pipeline. First, the data are resampled to the isotropic voxel size of~0.5~mm. Second, the thrombus mask dilation prevents the impact of marginal effects during the feature extraction. Third, based on the selected area size, thrombus masking using the original thrombus mask (whole thrombus area) or core thrombus mask follows (core thrombus area). Based on the selection, the feature set creation finishes by this step (in case of voxel-based feature set), or continues by thrombus global statistics computation (global-based feature set) or thrombus feature histogram definition (distribution-based feature set). Thrombus histogram bin boundaries are defined by the training set. Data flow is represented by red lines, mask flow is represented by the blue line.}\label{fig.Thrombi_paper_FS_RF_SRP1}
+\includegraphics[width=1\textwidth]{img/Thrombi_paper_FS_RF_SRP1.png}
+\caption{Data preprocessing pipeline. First, the data are resampled to the isotropic voxel size of~0.5~mm. Second, the thrombus mask dilation suppresses the impact of marginal effects during the feature extraction. Third, based on the selected area size, thrombus masking using the original thrombus mask (whole thrombus area) or core thrombus mask follows (core thrombus area). Based on the selection, the feature set creation finishes by this step (in case of voxel-based feature set), or continues by thrombus global statistics computation (global-based feature set) or thrombus feature histogram definition (distribution-based feature set). Thrombus histogram bin boundaries are defined by the training set. Data flow is represented by red lines, mask flow is represented by the blue line.}\label{fig.Thrombi_paper_FS_RF_SRP1}
 \end{figure}
 
 To define radiomic features that introduce an additional information for the diagnostic establishment and thus for the clinicians, the classification of the SRP/nSRP using the extracted features was performed. Since radiomics offers a large number of extracted features some of which may be redundant and may lead to model overfitting, feature selection was performed using two different methods. Feature selection using the Least Absolute Shrinkage and Selection Operator (LASSO) removed features with the coefficient value equal to zero. Second type of feature selection kept only predefined number of features with the highest XGBoost Random Forest Classifier Importance (RFI).
@@ -319,7 +302,7 @@ Parameter tuning was performed using Bayesian optimization with 20 trials. Featu
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=1\textwidth]{doc/Thrombi_paper_FS_RF_SRP2.png}
+\includegraphics[width=1\textwidth]{img/Thrombi_paper_FS_RF_SRP2.png}
 \caption{Model training and optimization pipeline. Hyperparameter optimization is performed using Bayesian optimization with 20 trials. After the process of optimization, the hyperparameter setting of the trial with the highest mean accuracy through 5 fold cross validation is used for the final model training. $S^C$: split's complement.}\label{fig.Thrombi_paper_FS_RF_SRP2}
 \end{figure}
 
@@ -337,420 +320,6 @@ The predictivity of all-fold models was determined using the independent testing
 
 
 
-% ---- 4.1a thrombus vs centerline ----
-\begin{table}[htbp]
-\centering
-\small
-\caption{Whole-thrombus vs.\ core segmentation, tested separately within each of the 3 feature representations (voxel: raw per-voxel values; distribution: per-patient histograms; global: per-patient summary statistics), paired DeLong and McNemar tests on 141 NOIV patients (out-of-fold, pooled across 5 folds). Benjamini--Hochberg correction over $m=12$ tests; 0/12 survive.}
-\label{tab:4-1a-thrombus-vs-centerline}
-\begin{tabular}{lrrrrrr}
-\toprule
-Representation & Method & $\Delta$AUC & $p$ (DeLong) & $p$ (McNemar) & $q$ (BH, $m$=12) & Sig.\ (BH) \\
-\midrule
-Distribution & RF+LASSO & $-0.042$ & $0.5591$ & $\mathbf{0.0072}$ & $0.0583$ & No \\
-Distribution & RF+RFI & $+0.180$ & $\mathbf{0.0094}$ & $\mathbf{0.0282}$ & $0.1125$ & No \\
-Distribution & SVC+LASSO & $+0.068$ & $0.2247$ & $0.3662$ & $0.3994$ & No \\
-Distribution & SVC+RFI & $+0.178$ & $\mathbf{0.0017}$ & $0.1845$ & $0.2768$ & No \\
-Global & RF+LASSO & $+0.175$ & $\mathbf{0.0047}$ & $\mathbf{0.0375}$ & $0.1125$ & No \\
-Global & RF+RFI & $+0.204$ & $\mathbf{0.0002}$ & $0.2561$ & $0.3074$ & No \\
-Global & SVC+LASSO & $+0.197$ & $\mathbf{0.0006}$ & $\mathbf{0.0097}$ & $0.0583$ & No \\
-Global & SVC+RFI & $+0.155$ & $\mathbf{0.0098}$ & $0.0993$ & $0.1986$ & No \\
-Voxel & RF+LASSO & $+0.042$ & $0.3296$ & $0.1797$ & $0.2768$ & No \\
-Voxel & RF+RFI & $+0.106$ & $0.0897$ & $1.0000$ & $1.0000$ & No \\
-Voxel & SVC+LASSO & $+0.081$ & $0.0755$ & $0.2115$ & $0.2820$ & No \\
-Voxel & SVC+RFI & $+0.118$ & $0.0561$ & $0.0654$ & $0.1570$ & No \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-% Po korekcii na mnohonásobné testovanie (BH, m=12) sa nenašiel štatisticky významný rozdiel medzi whole-thrombus a centerliestovaných kombinácií (3reprezentácie × 4 metódy), na hladine α=0,05.
-%                                                                                   Toto je "neexistuje dôkaz rozdinie je to to isté ako "dôkaz, že rozdiel neexistuje" (evidence of absence). Test proti nulovej hypotéze "žiadny rozdiel" ti nedovolí pozitívne potvrdiť, že whole a centerline sú ekvivalentné — len ti hovorí, že dáta neposkytujú dosť silný dôkaz na zamietnutie tejto nulovej hypotézy. Keby si chcelatvrdiť "sú ekvivalentné", potret (napr. TOST, ktorý sompoužíval v sekcii 4.4), nie obyčajný test rozdielu.
-
-% Prečo je to dôležité si všimnúť — nekorigované p-hodnoty vyzerali inak
-
-% Toto je presne prípad, prečo korekcia zmenila záver. Bez nej by si mohla dôjsť k opačnému dojmu:
-
-% ┌──────────────────────┬────────────┬────────┐
-% │      kombinácia      │ p (DeLong) │ q (BH) │
-% ├──────────────────────┼────────────┼────────┤
-% │ Global/RF+RFI        │     0,0002 │  0,307 │                                    ├──────────────────────┼───────
-% │ Global/SVC+LASSO     │     0,0006 │  0,058 │
-% ├──────────────────────┼────────────┼────────┤
-% │ Global/RF+LASSO      │     0,0047 │  0,113 │                                    ├──────────────────────┼───────
-% │ Distribution/SVC+RFI │     0,0017 │  0,277 │
-% └──────────────────────┴────────────┴────────┘
-
-% Nekorigovane vyzerajú štyri z 12 kombinácií "vysoko signifikantné" (p < 0,005) — ale po zohľadnení toho, že testuješ 12 hypotéz naraz, žiadna neprežije q < 0,05. Toto je presne ten istý princíp, o ktorom sme sa bavili pri sekcii 4.2 — a tu vidíš, prečo na tom záleží: bez korekcie by si mohla mylne uzavrieť, že global-based príznaky sú citlivé na výber regiónu (whole vs centerline), keď to v skutočnosti mohol byť artefakt viacnásobného testo
-% Dve kombinácie sú tesne pod hranicou                                              
-% Distribution/RF+LASSO (McNemar) a Global/SVC+LASSO majú q=0,058 — veľmi blízko 0,05. Toto by som v texte článku opísal ako "trend, ktorý neprežil korekciu", nie ako nulový výsledok bez akéhokoľvek náznaku — je rozdiel medzi q=0,058 a q=0,80.
-
-% Ešte jedna vec, ktorú stojí za to spomenúť                                        
-% Všimni si Global/RF+RFI: DeLong p=0,0002 (veľmi malé), ale McNemar p=0,256 (vôbec nie malé). To nie je chyba — DeLong testuje poradie/AUC (ako dobre model rozlišuje pacientov pravdepodobnostne), McNemar tes pri prahu 0,5. Model môže maťvýrazne odlišné AUC medzi whole a centerline, a napriek tomu robiť takmer rovnaké finálne rozhodnutia (0/1) — to je vecne zaujímavé zistenie samo osebe, nie len metodická poznámka.
-
-% Zhrnutie: tvoja formulácia je v princípe správna, len by som ju sprísnil na "nenašla som
-% štatisticky významný rozdiel" niel nie je" — a do článku by som pridal poznámku o dvoch takmer-signifikantných kombináciách a o rozpore DeLong/McNemar pri Global/RF+RFI.
-
-% ---- 4.1b Friedman ----
-\begin{table}[htbp]
-\centering
-\small
-\caption{Friedman rank test, method vs.\ method across the 6 feature sets (ranks of mean 5-fold AUC within each feature set). $F_F=1.92$ on (3, 15) df (critical value at $\alpha=0.05$: 3.29), $p=0.169$ -- omnibus not significant; no post-hoc pairwise tests performed.}
-\label{tab:4-1b-friedman}
-\begin{tabular}{lrr}
-\toprule
-Method & Mean rank & Mean AUC (across 6 feature sets) \\
-\midrule
-RF+LASSO & 2.67 & 0.513 \\
-RF+RFI & 1.50 & 0.531 \\
-SVC+LASSO & 2.83 & 0.547 \\
-SVC+RFI & 3.00 & 0.556 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-% Inú otázku než predchádzajúce dve tabuľky — tu sa netestuje "je model lepší než náhoda", ale "záleží vôbec na tom, akú metódu (selektor+klasifikátor) si vyberieš?" Porovnáva sa RF+LASSO, RF+RFI, SVC+LASSO, SVC+RFI medzi sebou, naprieč všetkými 6 feature setmi naraz.
-
-% Ako Friedmanov test funguje (prečo poradia, nie AUC priamo)
-
-% Pre každý zo 6 feature setov sa 4 metódy zoradia podľa ich priemernej AUC (1 = najhoršia, 4 = najlepšia v danom feature sete), a potom sa testuje, či sú tieto poradia systematicky odlišné naprieč feature setmi, alebo len náhodná fluktuácia. Neporovnáva sa teda absolútna hodnota AUC medzi metódami (tá sa mení kombináciu od kombinácie), ale relatívne poradie — to je robustnejšie voči tomu, že rôzne feature sety majú úplne inú škálu ťažkosti.
-
-% Interpretácia výsledku
-
-% - Mean rank: priemernajlepšie.
-% - F_F = 1,92 oproti kritickej hodnote 3,29 (α=0,05, df=(3,15)) → F_F < kritická hodnota, test nezamieta nulovú hypotézu
-% - p = 0,169 → nesignifikantné
-% - Žiadne post-hoc párové testy sa nerobili (správne — pri nesignifikantnom omnibuse by to bol lov na náhodné rozdiely)
-
-% Čo to znamená
-
-% Nenašiel sa štatisticky významný rozdiel medzi metódami — poradia, ktoré vidíš (RF+RFI najhoršie, SVC+RFI najlepšie), sú zlučiteľné s náhodnou fluktuáciou, nie s tým, že by voľba selektora/klasifikátora systematicky ovplyvňovala výkon.
-
-% Toto je žiadaný záver (presne ako to formulovala pôvodná poznámka statistika_co_spocitat.html) — nie sklamanie. Prečo:
-
-% - Keby na metóde výrazne záležalo, znamenalo by to, že výsledky práce sú krehké voči arbitrárnej voľbe algoritmu — čo by podkopalo dôveryhodnosť hlavného zistenia.
-% - Skutočnosť, že metódy sa navzájom nelíšia, ale niektoré kombinácie feature_set×metóda predsa len prekonávajú náhodu (ako si videla v tabuľke 4.2 — 6 z 16), naznačuje, že rozdiel robí feature set (reprezentácia dát), nie voľba klasifikátora/selektora. To je vecne čistejší a silnejší príbeh pre článok, než keby výsledok závisel od toho, ktorý konkrétny algoritmus si natrénovala.
-
-% Jedna vec na pozor pri interpretácii v texte: malá vzorka (6 "blokov" = 6 feature setov, len 4 "ošetrenia" = metódy) znamená, že tento test má nízku silu (power) — nesignifikantný výsledok pri n=6 blokov neznamená silný dôkaz ekvivalencie metód, len že sa nenašiel dostatočný dôkaz rozdielu (rovnaká výhrada ako pri predošlej tabuľke).
-
-% ---- 4.1c CI/calibration ----
-\begin{table}[htbp]
-\centering
-\small
-\caption{Confidence intervals and calibration for the best-performing method of each feature set, pooled over 141 NOIV out-of-fold patients (DeLong CI for AUC, Wilson CI for accuracy, class-stratified bootstrap CI for balanced accuracy, $n_{\mathrm{boot}}=5000$).}
-\label{tab:4-1c-ci-calibration}
-\begin{tabular}{llrrrr}
-\toprule
-Feature set & Best method & AUC (95\% DeLong CI) & ACC (95\% Wilson CI) & Balanced ACC (95\% boot.\ CI) & Brier \\
-\midrule
-Distribution & SVC+RFI & 0.667 (0.576--0.758) & 0.624 (0.542--0.700) & 0.596 (0.516--0.672) & 0.244 \\
-Distribution (core) & SVC+RFI & 0.489 (0.389--0.589) & 0.553 (0.471--0.633) & 0.528 (0.448--0.608) & 0.271 \\
-Global & SVC+LASSO & 0.648 (0.557--0.739) & 0.603 (0.520--0.680) & 0.587 (0.506--0.667) & 0.266 \\
-Global (core) & RF+LASSO & 0.465 (0.366--0.565) & 0.511 (0.429--0.592) & 0.470 (0.398--0.544) & 0.270 \\
-Voxel & SVC+RFI & 0.593 (0.496--0.689) & 0.574 (0.492--0.653) & 0.499 (0.470--0.530) & 0.340 \\
-Voxel (core) & RF+LASSO & 0.551 (0.456--0.647) & 0.532 (0.450--0.612) & 0.464 (0.419--0.510) & 0.361 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-% (Drobnosť: AUC tu je 0,667 pre distribution/svc_rfi, kým v tabuľke 4.2 bolo 0,675 — nie je to chyba, len iná štatistika: tu je to jedno poolované AUC cez 141 pacientov, v 4.2 priemer 5 samostatných foldových AUC. Blízke, ale nie identické čísla sú očakávané.)
-
-% Dôležité upozornenie — CI tu nie je hypotézový test s korekciou
-
-% Táto tabuľka len opisuje neistotu jedného čísla (deskriptívne CI), nekoriguje na to, že si vybrala "najlepší" model z 4 kandidátov na feature_set (výberová zaujatosť) ani na 6 súbežných feature setov. Nemôžeš teda povedať "distribution je signifikantne lepší než náhoda na α=0,05" len z tejto tabuľky — na to slúži formálny test v 4.2 (ktorý navyše sedí).
-
-% Nečakaný, ale dôležitý nález — Brierovo skóre
-
-% Toto je vec, ktorú by som vypichol samostatne. Konštantný prediktor na skutočnej prevalencii (0,5816) dáva Brier = 0,2433 (počítal som to už v sekcii 4.3). Porovnaj:
-
-% Ani jeden z 6 "najlepších" modelov neprekonáva Brierovým skóre triviálnu konštantu (predikovať pre každého pacienta rovnako jeho prevalenciu). To znamená: aj tam, kde model má rozumné AUC (poradie/diskriminácia je v poriadku — vie zoradiť pacientov), jeho surové pravdepodobnosti sú zle kalibrované — číselne horšie než najhlúpejší možný odhad. Toto je typický vzorec, keď model dobre rozlišuje, ale jeho výstupné skóre nie sú skutočné kalibrované pravdepodobnosti (často sa to opravuje Platt/isotonickou kalibráciou — mimochodom presne to, čo si robila pri svc_lasso v inom kontexte tejto session).
-
-% Zhrnutie: dva nezávislé zistenia z tejto tabuľky — (1) len distribution a global (whole-thrombus) majú CI mimo náhody, čo potvrdzuje 4.2; (2) žiadny model nie je dobre kalibrovaný v absolútnom zmysle, aj tie so signálom v AUC. Do článku by druhé zistenie zaslúžilo vlastnú vetu — je to bežný, ale dôležitý caveat pre klinickú interpretáciu pravdepodobností.
-
-% ---- 4.2 permutation test ----
-\begin{table}[htbp]
-\centering
-\small
-\caption{Permutation test against the label-shuffled null (5000 shared permutations per fold; test statistic = mean AUC across the 5 folds), $m=16$ aggregate feature-set combinations (voxel excluded). $\Delta\mathrm{AUC}$ and $\kappa$ relative to the null's own mean, not to 0.5. 6/16 combinations survive Benjamini--Hochberg correction.}
-\label{tab:4-2-permutation}
-\begin{tabular}{lrrrrrrr}
-\toprule
-Feature set & Method & AUC & $\Delta$AUC & $\kappa$ & $p$ & $q$ (BH, $m$=16) & Sig.\ (BH) \\
-\midrule
-Distribution & SVC+RFI & 0.675 & $+0.176$ & 0.351 & $\mathbf{0.0006}$ & $\mathbf{0.0080}$ & Yes \\
-Global & SVC+LASSO & 0.658 & $+0.159$ & 0.317 & $\mathbf{0.0012}$ & $\mathbf{0.0080}$ & Yes \\
-Global & RF+LASSO & 0.646 & $+0.147$ & 0.294 & $\mathbf{0.0016}$ & $\mathbf{0.0080}$ & Yes \\
-Distribution & RF+RFI & 0.645 & $+0.146$ & 0.291 & $\mathbf{0.0020}$ & $\mathbf{0.0080}$ & Yes \\
-Global & SVC+RFI & 0.627 & $+0.128$ & 0.255 & $\mathbf{0.0074}$ & $\mathbf{0.0237}$ & Yes \\
-Global & RF+RFI & 0.617 & $+0.117$ & 0.233 & $\mathbf{0.0108}$ & $\mathbf{0.0288}$ & Yes \\
-Distribution & SVC+LASSO & 0.560 & $+0.060$ & 0.120 & $0.1012$ & $0.2313$ & No \\
-Distribution (core) & SVC+RFI & 0.495 & $-0.004$ & -0.008 & $0.5277$ & $0.9972$ & No \\
-Distribution (core) & SVC+LASSO & 0.482 & $-0.019$ & -0.037 & $0.6433$ & $0.9972$ & No \\
-Global (core) & RF+LASSO & 0.466 & $-0.034$ & -0.067 & $0.7429$ & $0.9972$ & No \\
-Global (core) & SVC+RFI & 0.464 & $-0.036$ & -0.073 & $0.7580$ & $0.9972$ & No \\
-Distribution (core) & RF+RFI & 0.461 & $-0.038$ & -0.075 & $0.7658$ & $0.9972$ & No \\
-Global (core) & SVC+LASSO & 0.453 & $-0.047$ & -0.094 & $0.8178$ & $0.9972$ & No \\
-Distribution (core) & RF+LASSO & 0.468 & $-0.032$ & -0.064 & $0.8836$ & $0.9972$ & No \\
-Global (core) & RF+RFI & 0.396 & $-0.105$ & -0.210 & $0.9838$ & $0.9972$ & No \\
-Distribution & RF+LASSO & 0.353 & $-0.147$ & -0.293 & $0.9972$ & $0.9972$ & No \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-% Toto je hlavný pozitívny test celej štúdie: pre každú z 16 kombinácií (4 whole-thrombus feature sety × 4 metódy — skeleton varianty zámerne vylúčené z hlavnej rodiny, pozri predchádzajúcu diskusiu) sa testuje, či reálne natrénovaný model predikuje lepšie, než keby sa pacientske labely náhodne prehádzali.
-
-% Ako sa to počíta
-
-% 1. Pre každú kombináciu, pre každý z 5 foldov: 5000× sa náhodne prehádžu labely, model sa nepretrénováva (len sa prehodnotí na tých istých predikciách), spočíta sa AUC — vznikne nulové rozdelenie "čo by dosiahla náhoda".
-% 2. Testová štatistika = priemer AUC cez 5 foldov (reálny aj nulový, párovaný podľa čísla iterácie).
-% 3. p-hodnota = podiel z 5000 permutácií, ktoré dosiahli aspoň takú vysokú priemernú AUC ako reálny model.
-% 4. q = p po BH korekcii cez m=16.
-
-% Ako čítať stĺpce
-
-% - AUC — priemerná AUC reálneho modelu cez 5 foldov
-% - ΔAUC — o koľko je to nad priemerom nulového rozdelenia tejto konkrétnej kombinácie (nie nad 0,5 — nula sa mierne líši kombináciu od kombinácie)
-% - κ — normalizovaná verzia ΔAUC, ΔAUC / (1 − null_mean) — rovnaký zápis funguje aj pre ACC, kde by odčítanie od 0,5 bolo zavádzajúce
-% - q (BH, m=16) — rozhodujúci stĺpec
-
-% Výsledok
-
-% 6 z 16 kombinácií prežíva korekciu (q < 0,05) — jediné miesto v celej analýze 4.1–4.4, kde niečo formálne prežije:
-
-% ┌──────────────┬───────────┬───────┬───────┐
-% │ feature set  │  metóda   │  AUC  │   q   │
-% ├──────────────┼───────────┼───────┼───────┤
-% │ Distribution │ SVC+RFI   │ 0,675 │ 0,008 │
-% ├──────────────┼───────────┼───────┼───────┤
-% │ Global       │ SVC+LASSO │ 0,658 │ 0,008 │
-% ├──────────────┼───────────┼───────┼───────┤
-% │ Global       │ RF+LASSO  │ 0,646 │ 0,008 │
-% ├──────────────┼───────────┼───────┼───────┤
-% │ Distribution │ RF+RFI    │ 0,645 │ 0,008 │
-% ├──────────────┼───────────┼───────┼───────┤
-% │ Global       │ SVC+RFI   │ 0,627 │ 0,024 │
-% ├──────────────┼───────────┼───────┼───────┤
-% │ Global       │ RF+RFI    │ 0,617 │ 0,029 │
-% └──────────────┴───────────┴───────┴───────┘
-
-% Zvyšných 10 kombinácií — všetky skeleton varianty plus Distribution/SVC+LASSO (q=0,231) — nemá dôkaz signálu; AUC sa pohybuje okolo alebo pod 0,5.
-
-% Tri veci, ktoré z tabuľky vyplývajú
-
-% 1. Signál je len vo whole-thrombus dátach, nie v skeleton. Všetkých 6 signifikantných kombinácií pochádza z ne-skeletonizovaných feature setov. Toto priamo súvisí s tabuľkou 4.1a, kde whole-vs-centerline rozdiel formálne neprežil korekciu, ale dve kombinácie (Distribution/RF+LASSO, Global/SVC+LASSO) boli tesne pod hranicou q=0,058 — konzistentné s tým, že centerline dáta majú slabší signál.
-
-% 2. Metóda (selektor/klasifikátor) nerozhoduje o tom, či je signál — rozhoduje o tom feature set. To sedí s tabuľkou 4.1b (Friedman): žiadny rozdiel medzi RF/SVC, LASSO/RFI naprieč feature setmi. Tu vidíš prečo — v rámci global aj distribution sú signifikantné 3 zo 4 metód (chýba len SVC+LASSO pri distribution, RF+RFI je najhraničnejšia pri global). Signál teda nesie feature set, nie konkrétny algoritmus.
-
-% 3. Distribution/RF+LASSO je pozoruhodne zlý — AUC 0,353, ΔAUC = −0,147 (hlboko pod vlastnou náhodnou nulou). Model systematicky predikuje opačným smerom, než by mal. Test je jednostranný (testuje len "lepšie než náhoda"), takže sa to formálne neoznačí ako "signifikantné", ale je to vecne zaujímavý nález — táto konkrétna kombinácia je nestabilná/nespoľahlivá, nie len "bez signálu".
-
-% Zhrnutie pre článok: existuje reálny, korigovaný pozitívny nález — ale obmedzený na whole-thrombus distribution a global feature sety (6/16 kombinácií), nie na skeleton varianty ani konkrétnu voľbu klasifikátora.
-
-% ---- 4.3a ours vs reference ----
-\begin{table}[htbp]
-\centering
-\small
-\caption{Our pipeline vs.\ the van~Voorst/Henks exact-replication reference pipeline, paired DeLong test on the same 141 real outer-test-fold patients, $m=16$. 0/16 combinations survive Benjamini--Hochberg correction. The headline accuracy advantage (up to $+0.11$) collapses to at most $+0.035$ once the single driving fold (split index 1) is excluded (not shown in this table; see \texttt{stats\_4\_3\_ours\_vs\_reference.csv}).}
-\label{tab:4-3a-ours-vs-reference}
-\begin{tabular}{lrrrrrrr}
-\toprule
-Feature set & Method & AUC (ours) & AUC (ref.) & $\Delta$AUC & $p$ & $q$ (BH, $m$=16) & Sig.\ (BH) \\
-\midrule
-Distribution & SVC+RFI & 0.667 & 0.492 & $+0.175$ & $\mathbf{0.0118}$ & $0.1215$ & No \\
-Global & SVC+LASSO & 0.648 & 0.492 & $+0.157$ & $\mathbf{0.0224}$ & $0.1215$ & No \\
-Global & RF+LASSO & 0.641 & 0.492 & $+0.149$ & $\mathbf{0.0329}$ & $0.1215$ & No \\
-Distribution & RF+LASSO & 0.360 & 0.492 & $-0.131$ & $\mathbf{0.0357}$ & $0.1215$ & No \\
-Distribution & RF+RFI & 0.639 & 0.492 & $+0.147$ & $\mathbf{0.0380}$ & $0.1215$ & No \\
-Global & SVC+RFI & 0.623 & 0.492 & $+0.131$ & $0.0675$ & $0.1801$ & No \\
-Global & RF+RFI & 0.606 & 0.492 & $+0.114$ & $0.1002$ & $0.2291$ & No \\
-Distribution (core) & RF+LASSO & 0.402 & 0.492 & $-0.090$ & $0.1574$ & $0.3148$ & No \\
-Global (core) & RF+RFI & 0.402 & 0.492 & $-0.090$ & $0.1921$ & $0.3415$ & No \\
-Distribution & SVC+LASSO & 0.562 & 0.492 & $+0.070$ & $0.3453$ & $0.5524$ & No \\
-Global (core) & SVC+LASSO & 0.451 & 0.492 & $-0.041$ & $0.5543$ & $0.8062$ & No \\
-Distribution (core) & RF+RFI & 0.459 & 0.492 & $-0.033$ & $0.6170$ & $0.8226$ & No \\
-Global (core) & RF+LASSO & 0.465 & 0.492 & $-0.026$ & $0.7060$ & $0.8480$ & No \\
-Global (core) & SVC+RFI & 0.468 & 0.492 & $-0.023$ & $0.7420$ & $0.8480$ & No \\
-Distribution (core) & SVC+RFI & 0.489 & 0.492 & $-0.003$ & $0.9725$ & $0.9837$ & No \\
-Distribution (core) & SVC+LASSO & 0.493 & 0.492 & $+0.001$ & $0.9837$ & $0.9837$ & No \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-% Iná otázka než 4.2 — tam sa porovnávalo "náš model vs náhoda", tu sa porovnáva "náš model vs van Voorstova/Henkova referenčná pipeline" (jeden pevný ExtraTrees model, žiadny výber príznakov, natrénovaný na fixnej sade "rv"). Test je párovaný DeLong na tých istých 141 pacientoch zo skutočných testovacích foldov (nie z vnútorných holdoutov, čo bola pôvodná chyba obrázka, ktorú sme opravovali skôr).
-
-% Prečo je "AUC (ref.)" v každom riadku rovnaké číslo (0,492)
-
-% Toto nie je chyba — je to tá istá jedna referenčná pipeline, porovnávaná postupne proti každej z 16 našich kombinácií. Referencia sama osebe má jednu pevnú (poolovanú) AUC = 0,492, nezávislú od toho, s ktorým naším modelom sa práve porovnáva.
-
-% Výsledok
-
-% 0 z 16 prežíva BH korekciu (min q = 0,122) — presne to, čo si videla aj v súhrnnej tabuľke. Ale všimni si, že 5 kombinácií malo surové p < 0,05:
-
-% ┌──────────────┬───────────┬────────┬───────┬───────┐
-% │ feature set  │  metóda   │  ΔAUC  │   p   │   q   │
-% ├──────────────┼───────────┼────────┼───────┼───────┤
-% │ Distribution │ SVC+RFI   │ +0,175 │ 0,012 │ 0,122 │
-% ├──────────────┼───────────┼────────┼───────┼───────┤
-% │ Global       │ SVC+LASSO │ +0,157 │ 0,022 │ 0,122 │
-% ├──────────────┼───────────┼────────┼───────┼───────┤
-% │ Global       │ RF+LASSO  │ +0,149 │ 0,033 │ 0,122 │
-% ├──────────────┼───────────┼────────┼───────┼───────┤
-% │ Distribution │ RF+LASSO  │ −0,131 │ 0,036 │ 0,122 │
-% ├──────────────┼───────────┼────────┼───────┼───────┤
-% │ Distribution │ RF+RFI    │ +0,147 │ 0,038 │ 0,122 │
-% └──────────────┴───────────┴────────┴───────┴───────┘
-
-% Bez korekcie by si mohla povedať "5 z 16 modelov je lepších než referencia" — po korekcii na 16 súbežných testov nič neprežije.
-
-% Prečo to nesedí s tabuľkou 4.2 (kde 6/16 prežilo)
-
-% Toto je dôležitý bod. Rovnaké najlepšie kombinácie (Distribution/SVC+RFI, Global/SVC+LASSO, Global/RF+LASSO, Distribution/RF+RFI) tu majú horšie p-hodnoty než v 4.2, hoci porovnávaš prakticky to isté (dobrý model vs. niečo blízke náhode — referencia má AUC 0,492, teda skoro presne 0,5). Dôvod:
-
-% - V 4.2 sa porovnávalo proti permutačnej nule s 5000 vzorkami — veľmi presne odhadnutá, málo šumu.
-% - Tu sa porovnáva proti jednému konkrétnemu modelu s vlastnou variabilitou medzi foldmi — DeLongov test musí zohľadniť neistotu oboch kriviek naraz (kovariančný člen), a referenčná pipeline má medzi foldmi značne nerovnomerný výkon (spomeň si, jeden fold mal AUC 0,54, ostatné ~0,48–0,52). Táto extra neistota z referencie robí test menej silný (nižšia štatistická sila), aj keď smer rozdielu je rovnaký.
-
-% Praktický záver: "náš model je lepší než náhoda" je štatisticky podložené tvrdenie (4.2). "Náš model je lepší než referenčná pipeline" nie je — napriek tomu, že čísla vyzerajú priaznivo (ΔAUC až +0,175).
-
-% Distribution/RF+LASSO — opäť problematická kombinácia
-
-% Rovnaká kombinácia, ktorá v 4.2 mala AUC hlboko pod náhodou (0,353), tu má záporné Δ voči referencii (−0,131, p=0,036) — teda je horšia aj než skoro-náhodná referenčná pipeline. Toto je tretí nezávislý test (po 4.2), kde sa táto kombinácia javí ako systematicky nespoľahlivá — stojí za samostatnú vetu v diskusii, nie len za tichý riadok v tabuľke.
-
-% Poznámka z popisu tabuľky — jeden fold ťahá celý rozdiel
-
-% Caption pripomína: pôvodná výhoda v ACC (až +0,11) klesne na max. +0,035, keď sa vylúči jeden konkrétny fold (split index 1). To znamená, že aj to skromné, nekorigované zdanie výhody nad referenciou z veľkej časti stojí na jednom foldu — ďalší dôvod, prečo záver "sme lepší než referencia" v tejto podobe dát neobstojí.
-
-% Zhrnutie pre článok: napriek priaznivo vyzerajúcim rozdielom AUC/ACC, žiadny formálny, korigovaný dôkaz, že naša pipeline prekonáva referenčnú van Voorstovu pipeline, neexistuje — a zdanlivá výhoda navyše závisí najmä od jedného foldu.
-
-% ---- 4.3b reference calibration ----
-\begin{table}[htbp]
-\centering
-\small
-\caption{Calibration of the reference pipeline on 141 NOIV out-of-fold patients. The reference is worse than a constant predictor at the observed prevalence; its predicted probabilities vary too little (SD $=0.022$) for the calibration slope/intercept to be meaningfully interpreted.}
-\label{tab:4-3b-reference-calibration}
-\begin{tabular}{lr}
-\toprule
-Quantity & Value \\
-\midrule
-Brier score (reference) & 0.2468 \\
-Brier score, constant $\hat p=0.5$ & 0.2500 \\
-Brier score, constant $\hat p=$ prevalence & 0.2433 \\
-Predicted-probability range & [0.4983, 0.5570] \\
-Predicted-probability SD & 0.0219 \\
-Calibration slope / intercept & 2.16 / 0.24 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-% Toto je vysvetlenie, prečo referenčná pipeline v tabuľke 4.3a vyšla s AUC len 0,492 (prakticky náhoda). Kým 4.3a testovala diskrimináciu (vie model zoradiť pacientov podľa rizika?), táto tabuľka testuje kalibráciu (sú jeho pravdepodobnosti vôbec zmysluplné čísla?) — to sú dve nezávislé vlastnosti modelu, ktoré sa dajú pokaziť samostatne.
-
-% Kľúčové zistenie — Brierovo skóre
-
-% Brierovo skóre = priemer (predikovaná pravdepodobnosť − skutočný výsledok)² cez 141 pacientov. Nižšie = lepšie, 0 = dokonalé.
-
-% ┌──────────────────────────────────┬────────┐
-% │                                  │ Brier  │
-% ├──────────────────────────────────┼────────┤
-% │ Referenčná pipeline              │ 0,2468 │
-% ├──────────────────────────────────┼────────┤
-% │ Konštanta 0,5 (hodenie mincou)   │ 0,2500 │
-% ├──────────────────────────────────┼────────┤
-% │ Konštanta na prevalencii (0,582) │ 0,2433 │
-% │ Konštanta 0,5 (hodenie mincou)   │ 0,2500 │
-% ├──────────────────────────────────┼────────┤
-% │ Konštanta na prevalencii (0,582) │ 0,2433 │
-% └──────────────────────────────────┴────────┘
-
-% Referenčná pipeline je horšia než najhlúpejší možný odhad — teda horšia, než keby si pre každého pacienta bez ohľadu na jeho dáta predikovala rovnaké číslo (prevalenciu ochorenia v populácii). Je len minimálne (0,0032) lepšia než hodenie mincou. Toto nie je len "slabý model" — je to model, ktorý neprináša žiadnu použiteľnú informáciu navyše oproti tomu, čo už vieš bez toho, aby si sa vôbec pozrela na dáta pacienta.
-
-% Prečo — rozsah predikovaných pravdepodobností
-
-% [0,4983, 0,5570], smerodajná odchýlka 0,022. Model prakticky vždy hovorí "približne 50 na 50", bez ohľadu na konkrétneho pacienta — celý rozsah predikcií naprieč všetkými 141 pacientmi je len 0,057 široký. Toto priamo vysvetľuje AUC≈0,5 z tabuľky 4.3a: keď model dáva takmer identické skóre každému, nemá z čoho zoradiť pacientov.
-
-% Kalibračný sklon/intercept — prečo ich neinterpretovať
-
-% Hodnoty 2,16 / 0,24 by za normálnych okolností znamenali: ideálna kalibrácia = sklon 1, intercept 0; sklon > 1 naznačuje, že model je "príliš konzervatívny" (jeho pravdepodobnosti sú stlačené bližšie k 0,5, než by mali byť). Ale tu je tento výpočet metodicky pochybný — kalibračná regresia sa fituje na vstupe, ktorý má smerodajnú odchýlku len 0,022 (takmer konštantný). Fitovanie sklonu na takmer degenerovanom prediktore je numericky nestabilné a číslo 2,16 nemá spoľahlivú interpretačnú hodnotu — je to artefakt pokusu preložiť priamku takmer jedným bodom, nie skutočný kalibračný nález.
-
-% Zhrnutie pre článok
-
-% Toto potvrdzuje presne to, čo navrhovala pôvodná poznámka (statistika_co_spocitat.html): správna formulácia nie je "referenčná pipeline bola horšia", ale "referenčná pipeline nekonvergovala k ničomu netriviálnemu" — jej výstup je prakticky konštantný, nie zle kalibrovaný v bežnom zmysle. Toto je dôležité rozlíšenie: chráni to pred obvinením z nefér reprodukcie (že sme referenčnú metódu implementovali zle) — problém nie je v tom, ako sme ju spustili, ale v tom, že sa sama naučila degenerované riešenie.
-
-% ---- 4.4 Registry vs chance ----
-\begin{table}[htbp]
-\centering
-\small
-\caption{External validation on the MR~CLEAN Registry common cohort ($n=1635$, every model on identical patients). $^{\dagger}$ pre-specified primary model (highest mean 5-fold NOIV CV AUC), fixed before looking at the Registry. Analytic chance null $\mathrm{Var}_0=(n+1)/(12\,n_+n_-)$; TOST equivalence margin $0.05$ AUC. 0/16 survive Benjamini--Hochberg ($m=16$); 15/16 are TOST-equivalent to chance. Majority-class baseline accuracy is 0.553; no combination exceeds it.}
-\label{tab:4-4-registry}
-\begin{tabular}{lrrrrrr}
-\toprule
-Feature set / method & AUC & 95\% DeLong CI & $p$ (vs.\ chance) & $q$ (BH, $m$=16) & TOST-equiv. & ACC \\
-\midrule
-Global / RF+RFI & 0.472 & 0.444--0.500 & $0.0536$ & $0.5322$ & No & 0.491 \\
-Distribution (core) / SVC+RFI & 0.524 & 0.498--0.550 & $0.0975$ & $0.5322$ & Yes & 0.459 \\
-Global / SVC+LASSO & 0.479 & 0.451--0.508 & $0.1512$ & $0.5322$ & Yes & 0.492 \\
-\textbf{Distribution / SVC+RFI}$^{\dagger}$ & 0.481 & 0.453--0.510 & $0.1947$ & $0.5322$ & Yes & 0.459 \\
-Distribution / RF+RFI & 0.482 & 0.453--0.510 & $0.1986$ & $0.5322$ & Yes & 0.448 \\
-Global / SVC+RFI & 0.482 & 0.453--0.510 & $0.1996$ & $0.5322$ & Yes & 0.468 \\
-Global / RF+LASSO & 0.484 & 0.456--0.512 & $0.2719$ & $0.6215$ & Yes & 0.486 \\
-Distribution (core) / RF+LASSO & 0.514 & 0.493--0.535 & $0.3456$ & $0.6728$ & Yes & 0.447 \\
-Global (core) / RF+LASSO & 0.487 & 0.470--0.504 & $0.3785$ & $0.6728$ & Yes & 0.532 \\
-Distribution (core) / RF+RFI & 0.491 & 0.463--0.519 & $0.5182$ & $0.7510$ & Yes & 0.443 \\
-Global (core) / RF+RFI & 0.508 & 0.480--0.537 & $0.5552$ & $0.7510$ & Yes & 0.467 \\
-Distribution (core) / SVC+LASSO & 0.507 & 0.479--0.535 & $0.6055$ & $0.7510$ & Yes & 0.544 \\
-Distribution / SVC+LASSO & 0.494 & 0.466--0.522 & $0.6626$ & $0.7510$ & Yes & 0.469 \\
-Distribution / RF+LASSO & 0.494 & 0.480--0.509 & $0.7010$ & $0.7510$ & Yes & 0.447 \\
-Global (core) / SVC+LASSO & 0.505 & 0.477--0.533 & $0.7242$ & $0.7510$ & Yes & 0.505 \\
-Global (core) / SVC+RFI & 0.505 & 0.477--0.533 & $0.7510$ & $0.7510$ & Yes & 0.514 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-% Toto je najtvrdšia skúška v celej práci (presne tak to formulovala aj pôvodná poznámka): generalizuje sa čokoľvek natrénované na NOIV kohorte (141 pacientov) na skutočne externú, nezávislú kohortu MR CLEAN Registry? n = 1635 pacientov — všetkých 16 modelov na identických pacientoch (to je tá "common cohort" práca, ktorú sme robili na začiatku tejto session, presne kvôli tomu, aby toto porovnanie bolo férové).
-
-% Kľúčový bod — predem určený model
-
-% Riadok s † (Distribution/SVC+RFI) je vopred deklarovaný primárny model — vybraný pred pozretím na Registry výsledky, na základe najvyššej priemernej CV AUC na NOIV (0,675, presne ten istý model, čo bol na vrchole tabuľky 4.2). Toto je metodicky dôležité: keby si vyberala "najlepší" model až po tom, čo vidíš Registry výsledky, bolo by to data snooping — falošne optimistický výber.
-
-% Jeho výkon na Registry: AUC = 0,481 (CI 0,453–0,510) — prakticky presne náhoda, dokonca mierne pod 0,5. Model, ktorý na NOIV vyzeral najlepšie (0,675), na skutočne nezávislých dátach nefunguje vôbec.
-
-% Formálny test proti náhode
-
-% p = 0,195 pre primárny model — nesignifikantné aj bez korekcie. Po BH korekcii cez všetkých 16: 0/16 prežíva, min q = 0,532 — najslabší (najviac "nulový") výsledok zo všetkých štyroch sekcií 4.1–4.4.
-
-% TOST — pozitívny dôkaz, že je to naozaj náhoda (nie len chýbajúci dôkaz opaku)
-
-% Toto je rozdiel oproti predchádzajúcim tabuľkám, ktoré vedeli povedať len "nenašli sme rozdiel" (absence of evidence). TOST test tu robí niečo silnejšie: aktívne potvrdzuje, že skutočná AUC leží v pásme ±0,05 okolo 0,5.
-
-% 15 z 16 kombinácií je TOST-ekvivalentných s náhodou — teda pre 15 z 16 modelov máš pozitívny dôkaz, že ich výkon na Registry je prakticky na úrovni náhody, nie len "nedokázali sme, že nie je".
-
-% Jedna kombinácia (Global/RF+RFI, prvý riadok) neprešla ani jedným testom — ani proti náhode (p=0,054, tesne nad hranicou), ani TOST ekvivalenciou. Táto je štatisticky neurčená — dáta nedovoľujú ani potvrdiť, že má signál, ani potvrdiť, že je ekvivalentná náhode. Pozor na interpretáciu: jej AUC = 0,472, teda pod 0,5 — to p=0,054 nie je "skoro dôkaz reálneho signálu", je to skoro dôkaz, že model predikuje systematicky opačne (rovnaký vzorec, aký sme videli pri Distribution/RF+LASSO v 4.2 a 4.3a).
-
-% Presvedčivý, jednoduchý fakt — porovnanie s väčšinovou triedou
-
-% Väčšinová trieda v Registry má podiel 0,553. Ani jedna z 16 kombinácií túto hodnotu nepresahuje (najlepšia ACC = 0,544). To znamená: triviálny klasifikátor, ktorý by pre každého pacienta predikoval tú istú (väčšinovú) triedu bez toho, aby sa vôbec pozrel na dáta, by porazil všetkých 16 natrénovaných modelov na presnosti.
-
-% Zhrnutie pre článok
-
-% Toto je rozhodujúci negatívny výsledok: model vybraný vopred podľa najlepšej CV výkonnosti na vývojovej kohorte zlyháva na skutočne nezávislej externej kohorte — nielen že neprežije korekciu, ale TOST pozitívne potvrdzuje, že jeho výkon je na úrovni náhody, a ani jeden model neprekoná ani triviálny "vždy predikuj väčšinu" prístup. V kombinácii s tabuľkou 4.3b (referenčná pipeline tiež zlyháva, len iným spôsobom — degenerovanou kalibráciou) to vytvára konzistentný obraz: čokoľvek natrénované na tejto malej NOIV kohorte (vlastná pipeline aj referenčná) negeneralizuje na externú populáciu.
-
-% ---- Overall summary ----
-\begin{table}[htbp]
-\centering
-\small
-\caption{Summary of all statistical analyses across manuscript Results sections 4.1--4.4. $q$ = Benjamini--Hochberg-adjusted $p$-value (minimum across the family where applicable). The only finding that survives multiplicity correction is the permutation test in Section~4.2 (6/16 combinations); every comparison against the reference pipeline (4.3) and every external validation result on the Registry (4.4) is consistent with chance after correction.}
-\label{tab:results-summary}
-\begin{tabular}{llllllp{4.2cm}}
-\toprule
-Sec. & Analysis & Test & Scope & Key statistic & $p$/$q$ & Verdict \\
-\midrule
-4.1 & Voxel vs.\ core segmentation & DeLong / McNemar & $m=8$ & 0/8 (McNemar, BH) & 0.169 & No effect survives correction \\
-4.1 & Method vs.\ method (selector/classifier) & Friedman omnibus & $k=4$, $n=6$ & $F_F=1.92$ & 0.169 & Not significant (as expected) \\
-4.1 & Best-model CI / calibration & DeLong / Wilson / Brier CI & $n=141$ & AUC 0.667 & -- & Best: Distribution/SVC+RFI, CI [0.58, 0.76] \\
-4.2 & Performance vs.\ permutation null & Permutation test (5000 perm.) & $m=16$ & 6/16 survive BH & 0.0080 & \textbf{6/16 significant} -- main positive finding \\
-4.3 & Our pipeline vs.\ reference pipeline & Paired DeLong & $m=16$, $n=141$ & 0/16 survive BH & 0.122 & No difference survives correction; headline gap driven by 1 fold \\
-4.3 & Reference pipeline calibration & Brier score & $n=141$ & Brier 0.247 & -- & Worse than constant-at-prevalence predictor (0.243) \\
-4.4 & Pre-specified model on Registry & Analytic AUC null / TOST & $n=1635$ & AUC 0.481 & 0.195 & TOST-equivalent to chance ($p=0.015$) \\
-4.4 & All 16 combinations on Registry & Analytic AUC null, BH & $m=16$, $n=1635$ & 0/16 survive BH & 0.532 & 15/16 TOST-equivalent to chance; none beat majority class \\
-\bottomrule
-\end{tabular}
-\end{table}
 
 \backmatter
 
@@ -758,49 +327,11 @@ Sec. & Analysis & Test & Scope & Key statistic & $p$/$q$ & Verdict \\
 
 Supplementary file \textit{B} contains the full per-combination AUC/ACC results for all methods, feature sets and regions of interest. The PyRadiomics extraction configuration is provided as \textit{PyradiomicsConfig.yaml}.
 
-\begin{table}[htbp]
-\centering
-\small
-\caption{in Fig.~\ref{fig.AUC_ACC_distributions_all}. Mean $\pm$ SD over the 5 folds; . RF: random forest; SVC: support vector classifier; RFI: RF-importance selector; LASSO: least absolute shrinkage and selection operator selector.}
-\label{tab:S1-auc-acc-distributions}
-\begin{tabular}{llrr}
-\toprule
-Feature set & Method & AUC (mean $\pm$ SD) & ACC (mean $\pm$ SD) \\
-\midrule
-\multicolumn{4}{l}{\textit{Distribution-based}} \\
-Whole & RF+LASSO & $0.353 \pm 0.079$ & $0.490 \pm 0.131$ \\
-Whole & RF+RFI & $0.645 \pm 0.053$ & $0.618 \pm 0.094$ \\
-Whole & SVC+LASSO & $0.560 \pm 0.120$ & $0.532 \pm 0.113$ \\
-Whole & SVC+RFI & $0.675 \pm 0.098$ & $0.625 \pm 0.078$ \\
-Core & RF+LASSO & $0.468 \pm 0.029$ & $0.583 \pm 0.111$ \\
-Core & RF+RFI & $0.461 \pm 0.059$ & $0.489 \pm 0.075$ \\
-Core & SVC+LASSO & $0.482 \pm 0.159$ & $0.475 \pm 0.128$ \\
-Core & SVC+RFI & $0.495 \pm 0.091$ & $0.553 \pm 0.078$ \\
-\addlinespace
-\multicolumn{4}{l}{\textit{Global-based}} \\
-Whole & RF+LASSO & $0.646 \pm 0.121$ & $0.625 \pm 0.112$ \\
-Whole & RF+RFI & $0.617 \pm 0.130$ & $0.555 \pm 0.128$ \\
-Whole & SVC+LASSO & $0.658 \pm 0.063$ & $0.604 \pm 0.106$ \\
-Whole & SVC+RFI & $0.627 \pm 0.053$ & $0.596 \pm 0.035$ \\
-Core & RF+LASSO & $0.466 \pm 0.122$ & $0.511 \pm 0.104$ \\
-Core & RF+RFI & $0.396 \pm 0.053$ & $0.496 \pm 0.032$ \\
-Core & SVC+LASSO & $0.453 \pm 0.082$ & $0.462 \pm 0.084$ \\
-Core & SVC+RFI & $0.464 \pm 0.099$ & $0.504 \pm 0.019$ \\
-\addlinespace
-\multicolumn{4}{l}{\textit{Voxel-based}} \\
-Whole & RF+LASSO & $0.602 \pm 0.106$ & $0.568 \pm 0.085$ \\
-Whole & RF+RFI & $0.596 \pm 0.115$ & $0.561 \pm 0.087$ \\
-Whole & SVC+LASSO & $0.610 \pm 0.083$ & $0.588 \pm 0.058$ \\
-Whole & SVC+RFI & $0.612 \pm 0.162$ & $0.575 \pm 0.098$ \\
-Core & RF+LASSO & $0.543 \pm 0.125$ & $0.533 \pm 0.062$ \\
-Core & RF+RFI & $0.472 \pm 0.141$ & $0.568 \pm 0.093$ \\
-Core & SVC+LASSO & $0.518 \pm 0.181$ & $0.524 \pm 0.107$ \\
-Core & SVC+RFI & $0.466 \pm 0.121$ & $0.525 \pm 0.122$ \\
-\bottomrule
-\end{tabular}
-\end{table}
-
 \bmhead{Acknowledgements}
+
+
+
+
 
 \NOTETODO{Write the acknowledgements. The elsarticle draft's Acknowledgements section only contained a commented-out, now-stale \texttt{\textbackslash include\{tables\_tom/output/supplement\}} referencing a path that no longer exists in this repository -- dropped rather than carried forward.}
 
@@ -850,6 +381,14 @@ Petra~Nemcekova: Conceptualization, Data curation, Formal analysis, Funding acqu
 \section{Parameter setting and optimization}\label{secA1}
 
 \NOTEWARN[Table A1 is referenced but does not exist]{The Methods section refers to ``Table A1'' (\texttt{Detailed information about parameter setting and optimization}) but no such table was ever created in the elsarticle draft -- only the in-text reference survived. Needs an actual table here, labelled \texttt{tab:placeholder-A1}, before submission.}
+
+
+
+Conclusion 1 - global and distribution based features are helpful, voxel based features do not make sense for prediction
+Conclusion 2 - even though in distribution and global based features are statistically singnificant difference between random model and trained model, performance of these models is poor
+Conclusion 3 - models are not generalized and do not work on different datasets
+
+
 
 \end{appendices}
 
